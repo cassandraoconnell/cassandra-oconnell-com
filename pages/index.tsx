@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { Divider } from "@/components/Divider/Divider";
-import { Header } from "@/sections/Header/Header";
-import { Intro } from "@/sections/Intro/Intro";
-import { TechStack } from "@/sections/TechStack/TechStack";
-import { Timeline } from "@/sections/Timeline/Timeline";
-import "@/style/global.css";
 import { Footer } from "@/sections/Footer/Footer";
+import { Header } from "@/sections/Header/Header";
+import { IntroSection } from "@/sections/Intro/Intro";
+import { TechStackSection } from "@/sections/TechStack/TechStack";
+import { TimelineSection } from "@/sections/Timeline/Timeline";
+import "@/style/global.css";
 
 export default function Home() {
   return (
@@ -22,13 +22,17 @@ export default function Home() {
       </Head>
       <main>
         <Header />
-        <Intro />
+        <IntroSection />
         <Divider />
-        <TechStack />
+        <TechStackSection />
         <Divider />
-        <Timeline />
+        <TimelineSection timeline={{}} />
         <Footer />
       </main>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  return { props: { data: {} } };
 }

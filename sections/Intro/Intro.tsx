@@ -1,7 +1,7 @@
 import { Text } from "@/components/Text/Text";
 import { intro } from "./Intro.css";
 
-export const Intro = () => {
+export const IntroSection = () => {
   return (
     <section className={intro}>
       <Text as="h1" color="light" family="mono" size="large" weight="normal">

@@ -1,7 +1,7 @@
 import { Text } from "@/components/Text/Text";
 import { technologies, techStack } from "./TechStack.css";
 
-export const TechStack = () => {
+export const TechStackSection = () => {
   return (
     <section className={techStack}>
       <Text as="h3" color="accent" family="sans" size="medium" weight="bold">
