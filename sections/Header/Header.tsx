@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link } from "@/components/Link/Link";
 import { Text } from "@/components/Text/Text";
-import { headerVariants } from "./Header.css";
+import { GithubIcon } from "@/icons/Github";
+import { colors } from "@/style/tokens";
+import { headerVariants, links } from "./Header.css";
+import { LinkedInIcon } from "@/icons/LinkedIn";
+import { TwitterIcon } from "@/icons/Twitter";
 
 export const Header = () => {
   const [isStuck, setIsStuck] = useState(false);
@@ -28,6 +33,29 @@ export const Header = () => {
       >
         {"Cassandra O'Connell"}
       </Text>
+      <div className={links}>
+        <Link href="https://github.com/cassandraoconnell" target="_blank">
+          <GithubIcon
+            color={isStuck ? colors.dark : colors.light}
+            height={20}
+          />
+        </Link>
+        <Link
+          href="https://www.linkedin.com/in/cassandra-o-connell-7725561aa"
+          target="_blank"
+        >
+          <LinkedInIcon
+            color={isStuck ? colors.dark : colors.light}
+            height={20}
+          />
+        </Link>
+        <Link href="https://twitter.com/codessandra" target="_blank">
+          <TwitterIcon
+            color={isStuck ? colors.dark : colors.light}
+            height={20}
+          />
+        </Link>
+      </div>
     </header>
   );
 };

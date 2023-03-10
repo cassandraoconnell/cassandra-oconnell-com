@@ -4,6 +4,7 @@ import { colors, spacing, transition } from "@/style/tokens";
 const header = style({
   alignItems: "center",
   display: "flex",
+  justifyContent: "space-between",
   position: "sticky",
   top: 0,
   transition: transition.duration,
@@ -26,4 +27,9 @@ export const headerVariants = styleVariants({
       paddingTop: spacing.small,
     },
   ],
+});
+
+export const links = style({
+  display: "flex",
+  gap: spacing.extraSmall,
 });
