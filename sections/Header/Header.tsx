@@ -18,7 +18,6 @@ export const Header = () => {
       const observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
-            console.log(entry);
             setIsStuck(entry.isIntersecting);
           }
         },
