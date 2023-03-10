@@ -10,7 +10,7 @@ export const intro = style({
   paddingBottom: spacing.extraLarge,
   paddingTop: spacing.extraLarge,
   textAlign: "center",
-  width: "75%",
+  width: "50%",
 
   "@media": {
     [`screen and (max-width: ${breakpoints.medium})`]: {

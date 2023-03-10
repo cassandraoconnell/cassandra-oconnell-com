@@ -1,12 +1,29 @@
-import { style } from "@vanilla-extract/css";
-import { spacing } from "@/style/tokens";
+import { style, styleVariants } from "@vanilla-extract/css";
+import { colors, spacing, transition } from "@/style/tokens";
 
-export const header = style({
+const header = style({
   alignItems: "center",
   display: "flex",
-  left: 0,
-  paddingBottom: spacing.medium,
-  paddingTop: spacing.medium,
   position: "sticky",
   top: 0,
+  transition: transition.duration,
+});
+
+export const headerVariants = styleVariants({
+  loose: [
+    header,
+    {
+      backgroundColor: colors.dark,
+      paddingBottom: spacing.medium,
+      paddingTop: spacing.medium,
+    },
+  ],
+  stuck: [
+    header,
+    {
+      backgroundColor: colors.light,
+      paddingBottom: spacing.small,
+      paddingTop: spacing.small,
+    },
+  ],
 });

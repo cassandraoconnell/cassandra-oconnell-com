@@ -7,7 +7,7 @@ export const Intro = () => {
       <Text as="h1" color="light" family="mono" size="large" weight="normal">
         I’m a software engineer focused on{" "}
         <Text as="span" color="accent" family="mono" size="large" weight="bold">
-          well-architected and performant web apps{" "}
+          well-architected and performance-optimized web apps{" "}
         </Text>
         that are just as reliable as they are engaging.
       </Text>

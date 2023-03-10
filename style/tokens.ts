@@ -4,7 +4,10 @@ export const breakpoints = {
 };
 
 export const colors = {
-  accent: "#5ADB9D",
+  accent: {
+    base: "#5ADB9D",
+    dark: "#3F996E",
+  },
   dark: "#121212",
   light: "#FFFFFF",
 };
@@ -15,4 +18,8 @@ export const spacing = {
   medium: 34,
   large: 55,
   extraLarge: 89,
+};
+
+export const transition = {
+  duration: "0.2s",
 };
