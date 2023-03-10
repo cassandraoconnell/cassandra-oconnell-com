@@ -10,9 +10,13 @@ export const intro = style({
   paddingBottom: spacing.extraLarge,
   paddingTop: spacing.extraLarge,
   textAlign: "center",
-  width: "50%",
+  // width: "50%",
 
   "@media": {
+    [`screen and (min-width: ${breakpoints.medium})`]: {
+      width: "50%",
+    },
+
     [`screen and (max-width: ${breakpoints.medium})`]: {
       gap: spacing.large,
       paddingBottom: spacing.large,
@@ -21,7 +25,6 @@ export const intro = style({
 
     [`screen and (max-width: ${breakpoints.small})`]: {
       textAlign: "left",
-      width: "100%",
     },
   },
 });
