@@ -33,3 +33,11 @@ export const links = style({
   display: "flex",
   gap: spacing.extraSmall,
 });
+
+export const sentry = style({
+  backgroundColor: "transparent",
+  height: 10,
+  position: "absolute",
+  top: "100vh",
+  width: 10,
+});
