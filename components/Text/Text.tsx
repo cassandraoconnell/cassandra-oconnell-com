@@ -1,14 +1,11 @@
-import { Roboto_Mono, Rubik } from "next/font/google";
 import { useMemo } from "react";
 import {
   text,
   textColorVariants,
+  textFamilyVariants,
   textSizeVariants,
   textWeightVariants,
 } from "./Text.css";
-
-const roboto = Roboto_Mono({ subsets: ["latin"] });
-const rubik = Rubik({ subsets: ["latin"] });
 
 interface TextProps {
   as: "h1" | "h2" | "h3" | "p" | "span";
@@ -47,10 +44,10 @@ export const Text = ({
 
     switch (family) {
       case "mono":
-        classes.push(roboto.className);
+        classes.push(textFamilyVariants.mono);
         break;
       case "sans":
-        classes.push(rubik.className);
+        classes.push(textFamilyVariants.sans);
         break;
       default:
         break;

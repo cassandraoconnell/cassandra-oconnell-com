@@ -1,9 +1,9 @@
 import { Text } from "@/components/Text/Text";
-import { technologies, techStack } from "./TechStack.css";
+import { technologies, techStackSection } from "./TechStack.css";
 
 export const TechStackSection = () => {
   return (
-    <section className={techStack}>
+    <section className={techStackSection}>
       <Text as="h3" color="accent" family="sans" size="medium" weight="bold">
         Tech Stack
       </Text>

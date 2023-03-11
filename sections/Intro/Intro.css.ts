@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { breakpoints, spacing } from "@/style/tokens";
 
-export const intro = style({
+export const introSection = style({
   display: "flex",
   flexDirection: "column",
   gap: spacing.extraLarge,

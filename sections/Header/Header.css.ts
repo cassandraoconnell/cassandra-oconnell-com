@@ -8,6 +8,7 @@ const header = style({
   position: "sticky",
   top: 0,
   transition: transition.duration,
+  zIndex: 1,
 });
 
 export const headerVariants = styleVariants({

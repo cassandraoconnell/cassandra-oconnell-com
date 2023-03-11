@@ -11,7 +11,7 @@ export const technologies = style({
   },
 });
 
-export const techStack = style({
+export const techStackSection = style({
   alignItems: "center",
   borderColor: "rgba(255, 255, 255, 0.5)",
   display: "flex",

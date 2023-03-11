@@ -23,3 +23,12 @@ export const spacing = {
 export const transition = {
   duration: "0.2s",
 };
+
+export const typography = {
+  mono: {
+    fontFamily: "var(--family-mono)",
+  },
+  sans: {
+    fontFamily: "var(--family-sans)",
+  },
+};

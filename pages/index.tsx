@@ -1,3 +1,4 @@
+import { InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { Divider } from "@/components/Divider/Divider";
 import { Footer } from "@/sections/Footer/Footer";
@@ -5,9 +6,12 @@ import { Header } from "@/sections/Header/Header";
 import { IntroSection } from "@/sections/Intro/Intro";
 import { TechStackSection } from "@/sections/TechStack/TechStack";
 import { TimelineSection } from "@/sections/Timeline/Timeline";
+import { Timeline } from "@/types/Timeline";
 import "@/style/global.css";
 
-export default function Home() {
+export default function Home({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
       <Head>
@@ -20,19 +24,48 @@ export default function Home() {
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
         />
       </Head>
-      <main>
+      <>
         <Header />
         <IntroSection />
         <Divider />
         <TechStackSection />
         <Divider />
-        <TimelineSection timeline={{}} />
+        <TimelineSection timeline={data.timeline} />
         <Footer />
-      </main>
+      </>
     </>
   );
 }
 
-export async function getServerSideProps() {
-  return { props: { data: {} } };
-}
+export const getServerSideProps = async () => {
+  const timeline: Timeline = {
+    discoveries: [],
+    experiences: [
+      {
+        company: "mmhmm",
+        description: "TODO",
+        end: null,
+        job: "Staff Software Engineer, Technical Lead",
+        logo: "TODO",
+        start: new Date("March 1, 2022 00:00:00").getTime(),
+      },
+      // TODO
+      {
+        company: "Real Art",
+        description: "TODO",
+        end: new Date("December 1, 2016 00:00:00").getTime(),
+        job: "Designer",
+        logo: "TODO",
+        start: new Date("June 1, 2013 00:00:00").getTime(),
+      },
+    ],
+  };
+
+  return {
+    props: {
+      data: {
+        timeline,
+      },
+    },
+  };
+};

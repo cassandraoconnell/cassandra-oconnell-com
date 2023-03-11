@@ -1,5 +1,5 @@
 import { style, styleVariants } from "@vanilla-extract/css";
-import { breakpoints, colors } from "@/style/tokens";
+import { breakpoints, colors, typography } from "@/style/tokens";
 
 export const text = style({
   margin: 0,
@@ -10,6 +10,11 @@ export const textColorVariants = styleVariants({
   accent: { color: colors.accent.base },
   dark: { color: colors.dark },
   light: { color: colors.light },
+});
+
+export const textFamilyVariants = styleVariants({
+  mono: typography.mono,
+  sans: typography.sans,
 });
 
 export const textSizeVariants = styleVariants({

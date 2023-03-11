@@ -18,7 +18,9 @@ export const Header = () => {
       const observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
-            setIsStuck(entry.isIntersecting);
+            const { top } = entry.boundingClientRect;
+
+            setIsStuck(entry.isIntersecting || top < 0);
           }
         },
         { threshold: [1] }

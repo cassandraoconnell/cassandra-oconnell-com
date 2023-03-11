@@ -1,9 +1,9 @@
 import { Text } from "@/components/Text/Text";
-import { intro } from "./Intro.css";
+import { introSection } from "./Intro.css";
 
 export const IntroSection = () => {
   return (
-    <section className={intro}>
+    <section className={introSection}>
       <Text as="h1" color="light" family="mono" size="large" weight="normal">
         I’m a software engineer focused on{" "}
         <Text as="span" color="accent" family="mono" size="large" weight="bold">
