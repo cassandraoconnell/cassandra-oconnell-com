@@ -7,7 +7,10 @@ export const Footer = () => {
     <footer className={footer}>
       <Text as="p" color="dark" family="sans" size="small" weight="normal">
         This site was built using NextJS and Typescript. You can see the code{" "}
-        <Link href="https://github.com/cassandraoconnell/cassandra-oconnell-com">
+        <Link
+          href="https://github.com/cassandraoconnell/cassandra-oconnell-com"
+          target="_blank"
+        >
           here
         </Link>
         , if you’re interested.
