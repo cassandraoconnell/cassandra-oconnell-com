@@ -43,16 +43,26 @@ export const getServerSideProps = async () => {
     experiences: [
       {
         company: "mmhmm",
-        description: "TODO",
+        description:
+          "Architected a WebGL video chat, editing, and recording app from scratch as the team’s technical lead, wrote software proposals and documentation, advised other teams on architectural decisions and codebase performance optimizations.",
         end: null,
         job: "Staff Software Engineer, Technical Lead",
         logo: "TODO",
         start: new Date("March 1, 2022 00:00:00").getTime(),
       },
+      {
+        company: "Losant",
+        description:
+          "Sat as both the technical and managerial lead for the front end team, coordinated feature planning and development, initiated and implemented significant architectural/performance enhancements, developed features, performed code review, advised teams developing Rust projects.",
+        end: new Date("March 1, 2022 00:00:00").getTime(),
+        job: "Lead Front End Software Engineer",
+        logo: "TODO",
+        start: new Date("March 1, 2021 00:00:00").getTime(),
+      },
       // TODO
       {
         company: "Real Art",
-        description: "TODO",
+        description: null,
         end: new Date("December 1, 2016 00:00:00").getTime(),
         job: "Designer",
         logo: "TODO",

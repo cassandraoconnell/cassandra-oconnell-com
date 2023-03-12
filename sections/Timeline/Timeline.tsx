@@ -1,23 +1,28 @@
-import { Text } from "@/components/Text/Text";
+import { useState } from "react";
 import { Timeline } from "@/types/Timeline";
 import {
-  discovery,
-  experience,
+  timelineOverlayVariants,
   timelineSection,
-  timelineSpan,
   timelineYear,
   timelineYears,
 } from "./Timeline.css";
-import { getYears, getYearSpans, getYearsReversed } from "./Timeline.utilities";
+import {
+  getYears,
+  getExperienceRenderData,
+  getYearsReversed,
+} from "./Timeline.utilities";
+import { Experience } from "./Experience/Experience";
 
 interface TimelineProps {
   timeline: Timeline;
 }
 
 export const TimelineSection = ({ timeline }: TimelineProps) => {
+  const [activeId, setActiveId] = useState<string | null>(null);
+
   const years = getYears({ timeline });
   const yearsReversed = getYearsReversed({ years });
-  const spans = getYearSpans({
+  const experienceRenderData = getExperienceRenderData({
     experiences: timeline.experiences,
     years,
     yearsReversed,
@@ -25,29 +30,33 @@ export const TimelineSection = ({ timeline }: TimelineProps) => {
 
   return (
     <section className={timelineSection}>
-      <div className={experience}>
-        <Text as="h3" color="accent" family="sans" size="medium" weight="bold">
-          Experience
-        </Text>
-      </div>
       <div className={timelineYears}>
         {yearsReversed.map((year) => (
           <div className={timelineYear} data-year={year} key={year} />
         ))}
-        {spans.map((span) => (
-          <div
-            className={timelineSpan}
-            key={`${span.top}-${span.bottom}`}
-            style={{ bottom: span.bottom, top: span.top }}
-          />
-        ))}
+        {experienceRenderData.map(
+          ({ company, description, id, job, position, span }) => (
+            <Experience
+              activeId={activeId}
+              company={company}
+              description={description}
+              id={id}
+              job={job}
+              key={id}
+              position={position}
+              setActiveId={setActiveId}
+              span={span}
+            />
+          )
+        )}
       </div>
-
-      <div className={discovery}>
-        <Text as="h3" color="accent" family="sans" size="medium" weight="bold">
-          Discovery
-        </Text>
-      </div>
+      <div
+        className={
+          activeId
+            ? timelineOverlayVariants.active
+            : timelineOverlayVariants.default
+        }
+      />
     </section>
   );
 };

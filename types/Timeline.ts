@@ -6,7 +6,7 @@ export interface Discovery {
 
 export interface Experience {
   company: string;
-  description: string;
+  description: string | null;
   end: number | null;
   job: string;
   logo: string;

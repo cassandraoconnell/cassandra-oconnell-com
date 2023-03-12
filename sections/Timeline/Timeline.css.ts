@@ -1,20 +1,29 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style, styleVariants } from "@vanilla-extract/css";
 import {
   textColorVariants,
   textFamilyVariants,
   textSizeVariants,
   textWeightVariants,
 } from "@/components/Text/Text.css";
-import { colors, spacing } from "@/style/tokens";
+import { colors, spacing, transition } from "@/style/tokens";
 import { YEAR_HEIGHT } from "./Timeline.utilities";
 
-export const discovery = style({
-  flex: 2,
-  textAlign: "right",
+const timelineOverlay = style({
+  backgroundColor: colors.dark,
+  bottom: 0,
+  left: 0,
+  pointerEvents: "none",
+  position: "absolute",
+  right: 0,
+  top: 0,
+  transition: transition.duration,
 });
 
-export const experience = style({
-  flex: 2,
+globalStyle(`${timelineOverlay} > *`, { pointerEvents: "auto" });
+
+export const timelineOverlayVariants = styleVariants({
+  active: [timelineOverlay, { opacity: 0.5 }],
+  default: [timelineOverlay, { opacity: 0 }],
 });
 
 export const timelineSection = style({
@@ -22,17 +31,7 @@ export const timelineSection = style({
   paddingBottom: spacing.extraLarge,
   paddingTop: spacing.extraLarge,
   position: "relative",
-});
-
-export const timelineSpan = style({
-  backgroundColor: colors.accent.base,
-  left: "50%",
-  position: "absolute",
-  transform: "translateX(-50%)",
-  width: spacing.extraSmall,
-
-  top: 100,
-  bottom: 400,
+  zIndex: 0,
 });
 
 export const timelineYear = style([
@@ -44,7 +43,9 @@ export const timelineYear = style([
     borderBottom: `1px dotted ${colors.light}`,
     height: YEAR_HEIGHT - 1,
     position: "relative",
+    margin: "auto",
     opacity: 0.25,
+    width: spacing.large,
 
     "::after": {
       content: "attr(data-year)",
@@ -60,7 +61,7 @@ export const timelineYear = style([
 export const timelineYears = style({
   height: "100%",
   position: "relative",
-  width: spacing.large,
+  width: "100%",
 
   "::before": {
     borderRight: `1px dotted ${colors.light}`,
