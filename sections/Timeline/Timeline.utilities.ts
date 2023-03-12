@@ -48,8 +48,8 @@ export const getYearSpans = (options: {
       const endMonth = end.getMonth() + 1;
       const endYear = end.getFullYear();
       top =
-        YEAR_HEIGHT * options.yearsReversed.indexOf(endYear) -
-        MONTH_HEIGHT * endMonth;
+        YEAR_HEIGHT * options.yearsReversed.indexOf(endYear) +
+        MONTH_HEIGHT * (12 - endMonth);
     }
 
     spans.push({ bottom, top });

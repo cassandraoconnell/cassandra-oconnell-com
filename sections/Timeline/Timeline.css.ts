@@ -42,7 +42,7 @@ export const timelineYear = style([
   textWeightVariants.normal,
   {
     borderBottom: `1px dotted ${colors.light}`,
-    height: YEAR_HEIGHT,
+    height: YEAR_HEIGHT - 1,
     position: "relative",
     opacity: 0.25,
 
