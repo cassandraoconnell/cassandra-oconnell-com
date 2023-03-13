@@ -1,4 +1,4 @@
-import { style, styleVariants } from "@vanilla-extract/css";
+import { createVar, style, styleVariants } from "@vanilla-extract/css";
 import { colors, spacing, transition } from "@/style/tokens";
 
 const experience = style({
@@ -30,6 +30,7 @@ export const experienceBottomVariants = styleVariants({
 const experienceTop = style([
   experience,
   {
+    alignItems: "center",
     padding: spacing.small,
     width: "50%",
   },
@@ -49,6 +50,24 @@ const experienceLine = style({
 export const experienceLineVariants = styleVariants({
   active: [experienceLine, { backgroundColor: colors.accent.dark, zIndex: 1 }],
   default: [experienceLine, { backgroundColor: colors.accent.base }],
+});
+
+export const experienceLogoUrlVar = createVar();
+
+const experienceLogo = style({
+  backgroundColor: "white",
+  height: spacing.small,
+  maskImage: experienceLogoUrlVar,
+  maskPosition: "center",
+  maskRepeat: "no-repeat",
+  maskSize: "auto",
+  transition: transition.duration,
+  width: spacing.small,
+});
+
+export const experienceLogoVariants = styleVariants({
+  active: [experienceLogo, { backgroundColor: colors.dark }],
+  default: [experienceLogo, { backgroundColor: colors.light }],
 });
 
 const experienceSpan = style({

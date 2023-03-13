@@ -1,3 +1,4 @@
+import { MongoClient } from "mongodb";
 import { InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { Divider } from "@/components/Divider/Divider";
@@ -6,7 +7,7 @@ import { Header } from "@/sections/Header/Header";
 import { IntroSection } from "@/sections/Intro/Intro";
 import { TechStackSection } from "@/sections/TechStack/TechStack";
 import { TimelineSection } from "@/sections/Timeline/Timeline";
-import { Timeline } from "@/types/Timeline";
+import { Discovery, Experience, Timeline } from "@/types/Timeline";
 import "@/style/global.css";
 
 export default function Home({
@@ -30,7 +31,7 @@ export default function Home({
         <Divider />
         <TechStackSection />
         <Divider />
-        <TimelineSection timeline={data.timeline} />
+        {data.timeline ? <TimelineSection timeline={data.timeline} /> : null}
         <Footer />
       </>
     </>
@@ -38,38 +39,33 @@ export default function Home({
 }
 
 export const getServerSideProps = async () => {
-  const timeline: Timeline = {
-    discoveries: [],
-    experiences: [
-      {
-        company: "mmhmm",
-        description:
-          "Architected a WebGL video chat, editing, and recording app from scratch as the team’s technical lead, wrote software proposals and documentation, advised other teams on architectural decisions and codebase performance optimizations.",
-        end: null,
-        job: "Staff Software Engineer, Technical Lead",
-        logo: "TODO",
-        start: new Date("March 1, 2022 00:00:00").getTime(),
-      },
-      {
-        company: "Losant",
-        description:
-          "Sat as both the technical and managerial lead for the front end team, coordinated feature planning and development, initiated and implemented significant architectural/performance enhancements, developed features, performed code review, advised teams developing Rust projects.",
-        end: new Date("March 1, 2022 00:00:00").getTime(),
-        job: "Lead Front End Software Engineer",
-        logo: "TODO",
-        start: new Date("March 1, 2021 00:00:00").getTime(),
-      },
-      // TODO
-      {
-        company: "Real Art",
-        description: null,
-        end: new Date("December 1, 2016 00:00:00").getTime(),
-        job: "Designer",
-        logo: "TODO",
-        start: new Date("June 1, 2013 00:00:00").getTime(),
-      },
-    ],
-  };
+  const uri = process.env.MONGO_DB_CONNECTION_STRING;
+  let timeline: Timeline | null = null;
+
+  if (uri) {
+    const client = new MongoClient(uri);
+
+    try {
+      const database = client.db("timeline");
+
+      const discoveries = await database
+        .collection<Discovery>("discoveries")
+        .find({}, { sort: { start: -1 } })
+        .toArray();
+
+      const experiences = await database
+        .collection<Experience>("experiences")
+        .find({}, { sort: { start: -1 } })
+        .toArray();
+
+      timeline = {
+        discoveries: discoveries.map(({ _id, ...discovery }) => discovery),
+        experiences: experiences.map(({ _id, ...experience }) => experience),
+      };
+    } finally {
+      await client.close();
+    }
+  }
 
   return {
     props: {

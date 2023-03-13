@@ -35,13 +35,14 @@ export const TimelineSection = ({ timeline }: TimelineProps) => {
           <div className={timelineYear} data-year={year} key={year} />
         ))}
         {experienceRenderData.map(
-          ({ company, description, id, job, position, span }) => (
+          ({ company, description, id, job, logo, position, span }) => (
             <Experience
               activeId={activeId}
               company={company}
               description={description}
               id={id}
               job={job}
+              logo={logo}
               key={id}
               position={position}
               setActiveId={setActiveId}
