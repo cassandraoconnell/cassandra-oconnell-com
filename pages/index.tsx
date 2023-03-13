@@ -62,6 +62,8 @@ export const getServerSideProps = async () => {
         discoveries: discoveries.map(({ _id, ...discovery }) => discovery),
         experiences: experiences.map(({ _id, ...experience }) => experience),
       };
+    } catch (error) {
+      // TODO - log somewhere
     } finally {
       await client.close();
     }
