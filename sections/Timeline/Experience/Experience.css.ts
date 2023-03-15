@@ -18,7 +18,7 @@ const experienceVariants = styleVariants({
 
 const experienceBottom = style({
   flexDirection: "column",
-  padding: `${spacing.small}px ${spacing.small}px ${spacing.large}px ${spacing.small}px`,
+  padding: `${spacing.extraSmall}px ${spacing.small}px ${spacing.medium}px ${spacing.small}px`,
   transform: "translateY(100%)",
 });
 
@@ -31,7 +31,7 @@ const experienceTop = style([
   experience,
   {
     alignItems: "center",
-    padding: spacing.small,
+    padding: `${spacing.extraSmall}px ${spacing.small}px`,
     width: "50%",
   },
 ]);
