@@ -2,6 +2,7 @@ import { style, styleVariants } from "@vanilla-extract/css";
 import { breakpoints, colors, typography } from "@/style/tokens";
 
 export const text = style({
+  fontFamily: typography.fontFamily,
   margin: 0,
   padding: 0,
 });
@@ -12,15 +13,10 @@ export const textColorVariants = styleVariants({
   light: { color: colors.light },
 });
 
-export const textFamilyVariants = styleVariants({
-  mono: typography.mono,
-  sans: typography.sans,
-});
-
 export const textSizeVariants = styleVariants({
   large: {
-    fontSize: "2rem",
-    lineHeight: "1.5",
+    fontSize: "3rem",
+    lineHeight: "1",
 
     "@media": {
       [`screen and (max-width: ${breakpoints.medium})`]: {
@@ -28,11 +24,10 @@ export const textSizeVariants = styleVariants({
       },
     },
   },
-  medium: { fontSize: "1rem", lineHeight: "1.7" },
-  small: { fontSize: "0.875rem", lineHeight: "1.7" },
+  small: { fontSize: "1rem", lineHeight: "1.7" },
 });
 
 export const textWeightVariants = styleVariants({
-  bold: { fontWeight: "bold" },
-  normal: { fontWeight: "normal" },
+  bold: { fontWeight: "800" },
+  normal: { fontWeight: "500" },
 });

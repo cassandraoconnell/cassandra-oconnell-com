@@ -8,7 +8,7 @@ export const colors = {
     base: "#5ADB9D",
     dark: "#3F996E",
   },
-  dark: "#121212",
+  dark: "#141414",
   light: "#FFFFFF",
 };
 
@@ -25,10 +25,5 @@ export const transition = {
 };
 
 export const typography = {
-  mono: {
-    fontFamily: "var(--family-mono)",
-  },
-  sans: {
-    fontFamily: "var(--family-sans)",
-  },
+  fontFamily: "var(--font)",
 };

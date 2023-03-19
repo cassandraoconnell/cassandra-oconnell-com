@@ -1,7 +1,7 @@
 import { globalStyle, style, styleVariants } from "@vanilla-extract/css";
 import {
+  text,
   textColorVariants,
-  textFamilyVariants,
   textSizeVariants,
   textWeightVariants,
 } from "@/components/Text/Text.css";
@@ -35,8 +35,8 @@ export const timelineSection = style({
 });
 
 export const timelineYear = style([
+  text,
   textColorVariants.light,
-  textFamilyVariants.mono,
   textSizeVariants.small,
   textWeightVariants.normal,
   {

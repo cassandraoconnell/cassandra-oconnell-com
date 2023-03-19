@@ -1,14 +1,12 @@
 import { MongoClient } from "mongodb";
 import { InferGetServerSidePropsType } from "next";
 import Head from "next/head";
-import { Divider } from "@/components/Divider/Divider";
-import { Footer } from "@/sections/Footer/Footer";
-import { Header } from "@/sections/Header/Header";
-import { IntroSection } from "@/sections/Intro/Intro";
-import { TechStackSection } from "@/sections/TechStack/TechStack";
-import { TimelineSection } from "@/sections/Timeline/Timeline";
+import { Introduction } from "@/scenes/Introduction/Introduction";
 import { Discovery, Experience, Timeline } from "@/types/Timeline";
 import "@/style/global.css";
+import { Camera } from "@/components/Camera/Camera";
+import { History } from "@/scenes/History/History";
+import { Skills } from "@/scenes/Skills/Skills";
 
 export default function Home({
   data,
@@ -25,15 +23,13 @@ export default function Home({
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
         />
       </Head>
-      <>
-        <Header />
-        <IntroSection />
-        <Divider />
-        <TechStackSection />
-        <Divider />
-        {data.timeline ? <TimelineSection timeline={data.timeline} /> : null}
-        <Footer />
-      </>
+      <Camera
+        scenes={[
+          <Introduction key="introduction" />,
+          <History key="history" />,
+          <Skills key="skills" />,
+        ]}
+      />
     </>
   );
 }

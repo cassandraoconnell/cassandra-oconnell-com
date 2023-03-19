@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import {
   text,
   textColorVariants,
-  textFamilyVariants,
   textSizeVariants,
   textWeightVariants,
 } from "./Text.css";
@@ -10,8 +9,7 @@ import {
 interface TextProps {
   as: "h1" | "h2" | "h3" | "p" | "span";
   color: "accent" | "dark" | "light";
-  family: "mono" | "sans";
-  size: "large" | "medium" | "small";
+  size: "large" | "small";
   weight: "bold" | "normal";
 }
 
@@ -19,7 +17,6 @@ export const Text = ({
   as,
   children,
   color,
-  family,
   size,
   weight,
 }: React.PropsWithChildren<TextProps>) => {
@@ -42,23 +39,9 @@ export const Text = ({
         break;
     }
 
-    switch (family) {
-      case "mono":
-        classes.push(textFamilyVariants.mono);
-        break;
-      case "sans":
-        classes.push(textFamilyVariants.sans);
-        break;
-      default:
-        break;
-    }
-
     switch (size) {
       case "large":
         classes.push(textSizeVariants.large);
-        break;
-      case "medium":
-        classes.push(textSizeVariants.medium);
         break;
       case "small":
         classes.push(textSizeVariants.small);
@@ -79,7 +62,7 @@ export const Text = ({
     }
 
     return classes.join(" ");
-  }, [color, family, size, weight]);
+  }, [color, size, weight]);
 
   return <As className={className}>{children}</As>;
 };

@@ -6,7 +6,3 @@ globalStyle("html, body", {
   fontSize: 16,
   margin: 0,
 });
-
-globalStyle("footer, header, section", {
-  padding: "0 10%",
-});
