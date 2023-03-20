@@ -4,12 +4,12 @@ export const breakpoints = {
 };
 
 export const colors = {
-  accent: {
-    base: "#5ADB9D",
-    dark: "#3F996E",
+  black: "#141414",
+  gray: {
+    light: "#5B5B5B",
+    dark: "#2C2C2C",
   },
-  dark: "#141414",
-  light: "#FFFFFF",
+  white: "#FFFFFF",
 };
 
 export const spacing = {

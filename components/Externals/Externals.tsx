@@ -9,16 +9,16 @@ export const Externals = () => {
   return (
     <div className={externals}>
       <Link href="https://github.com/cassandraoconnell" target="_blank">
-        <GithubIcon color={colors.light} height={20} />
+        <GithubIcon color={colors.white} height={20} />
       </Link>
       <Link
         href="https://www.linkedin.com/in/cassandra-o-connell-7725561aa"
         target="_blank"
       >
-        <LinkedInIcon color={colors.light} height={20} />
+        <LinkedInIcon color={colors.white} height={20} />
       </Link>
       <Link href="https://twitter.com/codessandra" target="_blank">
-        <TwitterIcon color={colors.light} height={20} />
+        <TwitterIcon color={colors.white} height={20} />
       </Link>
     </div>
   );

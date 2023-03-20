@@ -49,7 +49,7 @@ export const Header = () => {
         <div className={links}>
           <Link href="https://github.com/cassandraoconnell" target="_blank">
             <GithubIcon
-              color={isStuck ? colors.dark : colors.light}
+              color={isStuck ? colors.black : colors.white}
               height={20}
             />
           </Link>
@@ -58,13 +58,13 @@ export const Header = () => {
             target="_blank"
           >
             <LinkedInIcon
-              color={isStuck ? colors.dark : colors.light}
+              color={isStuck ? colors.black : colors.white}
               height={20}
             />
           </Link>
           <Link href="https://twitter.com/codessandra" target="_blank">
             <TwitterIcon
-              color={isStuck ? colors.dark : colors.light}
+              color={isStuck ? colors.black : colors.white}
               height={20}
             />
           </Link>

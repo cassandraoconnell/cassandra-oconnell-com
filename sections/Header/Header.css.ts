@@ -15,7 +15,7 @@ export const headerVariants = styleVariants({
   loose: [
     header,
     {
-      backgroundColor: colors.dark,
+      backgroundColor: colors.black,
       paddingBottom: spacing.medium,
       paddingTop: spacing.medium,
     },
@@ -23,7 +23,7 @@ export const headerVariants = styleVariants({
   stuck: [
     header,
     {
-      backgroundColor: colors.light,
+      backgroundColor: colors.white,
       paddingBottom: spacing.small,
       paddingTop: spacing.small,
     },

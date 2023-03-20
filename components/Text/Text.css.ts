@@ -8,9 +8,8 @@ export const text = style({
 });
 
 export const textColorVariants = styleVariants({
-  accent: { color: colors.accent.base },
-  dark: { color: colors.dark },
-  light: { color: colors.light },
+  dark: { color: colors.black },
+  light: { color: colors.white },
 });
 
 export const textSizeVariants = styleVariants({

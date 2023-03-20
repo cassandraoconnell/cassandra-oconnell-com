@@ -3,7 +3,7 @@ import { breakpoints, colors, spacing } from "@/style/tokens";
 
 export const footer = style({
   alignItems: "center",
-  backgroundColor: colors.light,
+  backgroundColor: colors.white,
   display: "flex",
   gap: spacing.extraLarge,
   paddingBottom: spacing.large,

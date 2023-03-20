@@ -9,7 +9,7 @@ import { colors, spacing, transition } from "@/style/tokens";
 import { YEAR_HEIGHT } from "./Timeline.utilities";
 
 const timelineOverlay = style({
-  backgroundColor: colors.dark,
+  backgroundColor: colors.black,
   bottom: 0,
   left: 0,
   pointerEvents: "none",
@@ -40,7 +40,7 @@ export const timelineYear = style([
   textSizeVariants.small,
   textWeightVariants.normal,
   {
-    borderBottom: `1px dotted ${colors.light}`,
+    borderBottom: `1px dotted ${colors.white}`,
     height: YEAR_HEIGHT - 1,
     position: "relative",
     margin: "auto",
@@ -64,7 +64,7 @@ export const timelineYears = style({
   width: "100%",
 
   "::before": {
-    borderRight: `1px dotted ${colors.light}`,
+    borderRight: `1px dotted ${colors.white}`,
     bottom: 0,
     content: "",
     opacity: 0.25,

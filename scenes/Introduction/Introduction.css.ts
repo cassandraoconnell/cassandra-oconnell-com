@@ -7,6 +7,8 @@ export const introduction = style({
   height: "100%",
   justifyContent: "space-between",
   margin: "auto",
+  position: "relative",
   textAlign: "center",
   width: "75%",
+  zIndex: 1,
 });

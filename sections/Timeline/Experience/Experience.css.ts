@@ -12,7 +12,7 @@ const experience = style({
 });
 
 const experienceVariants = styleVariants({
-  active: [experience, { backgroundColor: colors.accent.base }],
+  active: [experience, { backgroundColor: "" }],
   default: [experience],
 });
 
@@ -48,8 +48,8 @@ const experienceLine = style({
 });
 
 export const experienceLineVariants = styleVariants({
-  active: [experienceLine, { backgroundColor: colors.accent.dark, zIndex: 1 }],
-  default: [experienceLine, { backgroundColor: colors.accent.base }],
+  active: [experienceLine, { backgroundColor: "", zIndex: 1 }],
+  default: [experienceLine, { backgroundColor: "" }],
 });
 
 export const experienceLogoUrlVar = createVar();
@@ -66,12 +66,12 @@ const experienceLogo = style({
 });
 
 export const experienceLogoVariants = styleVariants({
-  active: [experienceLogo, { backgroundColor: colors.dark }],
-  default: [experienceLogo, { backgroundColor: colors.light }],
+  active: [experienceLogo, { backgroundColor: colors.black }],
+  default: [experienceLogo, { backgroundColor: colors.white }],
 });
 
 const experienceSpan = style({
-  backgroundColor: colors.accent.base,
+  backgroundColor: "",
   cursor: "pointer",
   left: "50%",
   position: "absolute",
