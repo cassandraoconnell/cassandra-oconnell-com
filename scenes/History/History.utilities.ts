@@ -7,12 +7,9 @@ export const getYears = (options: { timeline: Timeline }): number[] => {
   let earliest = Date.now();
   let latest = Date.now();
 
-  for (const history of [
-    ...options.timeline.discoveries,
-    ...options.timeline.experiences,
-  ]) {
-    if (history.start < earliest) {
-      earliest = history.start;
+  for (const experience of options.timeline.experiences) {
+    if (experience.start < earliest) {
+      earliest = experience.start;
     }
   }
 

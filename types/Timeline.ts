@@ -1,9 +1,3 @@
-export interface Discovery {
-  description: string;
-  title: string;
-  start: number;
-}
-
 export interface Experience {
   company: string;
   description: string | null;
@@ -14,6 +8,5 @@ export interface Experience {
 }
 
 export interface Timeline {
-  discoveries: Discovery[];
   experiences: Experience[];
 }
