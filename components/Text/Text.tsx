@@ -8,7 +8,7 @@ import {
 
 interface TextProps {
   as: "h1" | "h2" | "h3" | "p" | "span";
-  color: "accent" | "dark" | "light";
+  color: "dark" | "light";
   size: "large" | "small";
   weight: "bold" | "normal";
 }
@@ -26,9 +26,6 @@ export const Text = ({
     const classes = [text];
 
     switch (color) {
-      case "accent":
-        classes.push(textColorVariants.accent);
-        break;
       case "dark":
         classes.push(textColorVariants.dark);
         break;
