@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import Particles from "react-particles";
 import type { Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
@@ -6,11 +6,17 @@ import { Externals } from "@/components/Externals/Externals";
 import { Name } from "@/components/Name/Name";
 import { Text } from "@/components/Text/Text";
 import { colors } from "@/style/tokens";
-import { introduction } from "./Introduction.css";
+import { introduction, particlesVariants } from "./Introduction.css";
 
 export const Introduction = () => {
-  const particlesInit = useCallback(async (engine: Engine) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const onInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
+  }, []);
+
+  const onLoaded = useCallback(async () => {
+    setIsLoading(false);
   }, []);
 
   return (
@@ -27,7 +33,11 @@ export const Introduction = () => {
         <Externals />
       </div>
       <Particles
-        init={particlesInit}
+        className={
+          isLoading ? particlesVariants.loading : particlesVariants.loaded
+        }
+        init={onInit}
+        loaded={onLoaded}
         options={{
           fpsLimit: 120,
           interactivity: {
