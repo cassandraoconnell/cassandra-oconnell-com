@@ -8,8 +8,8 @@ import {
 
 interface TextProps {
   as: "h1" | "h2" | "h3" | "p" | "span";
-  color: "dark" | "light";
-  size: "large" | "small";
+  color: "primary" | "secondary";
+  size: "large" | "medium" | "small";
   weight: "bold" | "normal";
 }
 
@@ -26,11 +26,11 @@ export const Text = ({
     const classes = [text];
 
     switch (color) {
-      case "dark":
-        classes.push(textColorVariants.dark);
+      case "primary":
+        classes.push(textColorVariants.primary);
         break;
-      case "light":
-        classes.push(textColorVariants.light);
+      case "secondary":
+        classes.push(textColorVariants.secondary);
         break;
       default:
         break;
@@ -39,6 +39,9 @@ export const Text = ({
     switch (size) {
       case "large":
         classes.push(textSizeVariants.large);
+        break;
+      case "medium":
+        classes.push(textSizeVariants.medium);
         break;
       case "small":
         classes.push(textSizeVariants.small);

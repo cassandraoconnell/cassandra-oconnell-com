@@ -1,13 +1,13 @@
-import { Experience, Timeline } from "@/types/Timeline";
+import { Experience, History } from "@/types/History";
 
 export const YEAR_HEIGHT = 120;
 export const MONTH_HEIGHT = YEAR_HEIGHT / 12;
 
-export const getYears = (options: { timeline: Timeline }): number[] => {
+export const getYears = (options: { history: History }): number[] => {
   let earliest = Date.now();
   let latest = Date.now();
 
-  for (const experience of options.timeline.experiences) {
+  for (const experience of options.history.experience) {
     if (experience.start < earliest) {
       earliest = experience.start;
     }
@@ -38,7 +38,7 @@ type ExperienceRenderData = {
 } & Experience;
 
 export const getExperienceRenderData = (options: {
-  experiences: Experience[];
+  experience: Experience[];
   years: number[];
   yearsReversed: number[];
 }): ExperienceRenderData[] => {
@@ -59,7 +59,7 @@ export const getExperienceRenderData = (options: {
 
   const experienceRenderData: ExperienceRenderData[] = [];
 
-  for (const experience of options.experiences) {
+  for (const experience of options.experience) {
     const start = new Date(experience.start);
     const startMonth = start.getMonth();
     const startYear = start.getFullYear();

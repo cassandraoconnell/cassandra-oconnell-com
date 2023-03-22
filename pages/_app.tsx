@@ -4,7 +4,7 @@ import { Darker_Grotesque } from "next/font/google";
 const font = Darker_Grotesque({
   subsets: ["latin"],
   variable: "--font",
-  weight: ["500", "800"],
+  weight: ["400", "900"],
 });
 
 export default function App({ Component, pageProps }: AppProps) {

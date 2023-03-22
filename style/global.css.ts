@@ -6,3 +6,7 @@ globalStyle("html, body", {
   fontSize: 16,
   margin: 0,
 });
+
+globalStyle("main", {
+  position: "relative",
+});

@@ -7,6 +7,6 @@ export interface Experience {
   start: number;
 }
 
-export interface Timeline {
-  experiences: Experience[];
+export interface History {
+  experience: Experience[];
 }

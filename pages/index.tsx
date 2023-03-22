@@ -1,26 +1,15 @@
 import { MongoClient } from "mongodb";
 import { InferGetServerSidePropsType } from "next";
 import Head from "next/head";
-import { Camera } from "@/components/Camera/Camera";
-import { History } from "@/scenes/History/History";
-import { Introduction } from "@/scenes/Introduction/Introduction";
-import { Skills } from "@/scenes/Skills/Skills";
-import { Experience, Timeline } from "@/types/Timeline";
+import { Experience, History } from "@/types/History";
+import { Home } from "@/containers/Home/Home";
+import { ParallaxProvider } from "react-scroll-parallax";
+import { OrientationProvider } from "@/components/Orientation/Orientation";
 import "@/style/global.css";
 
-export default function Home({
+export default function HomePage({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const scenes = [];
-
-  scenes.push(<Introduction key="introduction" />);
-
-  if (data.timeline) {
-    scenes.push(<History key="history" timeline={data.timeline} />);
-  }
-
-  scenes.push(<Skills key="skills" />);
-
   return (
     <>
       <Head>
@@ -33,28 +22,32 @@ export default function Home({
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
         />
       </Head>
-      <Camera scenes={scenes} />
+      <ParallaxProvider>
+        <OrientationProvider>
+          <Home history={data.history} />
+        </OrientationProvider>
+      </ParallaxProvider>
     </>
   );
 }
 
 export const getServerSideProps = async () => {
   const uri = process.env.MONGO_DB_CONNECTION_STRING;
-  let timeline: Timeline | null = null;
+  let history: History | undefined = undefined;
 
   if (uri) {
     const client = new MongoClient(uri);
 
     try {
-      const database = client.db("timeline");
+      const database = client.db("timeline"); // TODO - rename
 
       const experiences = await database
         .collection<Experience>("experiences")
         .find({}, { sort: { start: -1 } })
         .toArray();
 
-      timeline = {
-        experiences: experiences.map(({ _id, ...experience }) => experience),
+      history = {
+        experience: experiences.map(({ _id, ...experience }) => experience),
       };
     } catch (error) {
       // TODO - log somewhere
@@ -66,7 +59,7 @@ export const getServerSideProps = async () => {
   return {
     props: {
       data: {
-        timeline,
+        history,
       },
     },
   };
