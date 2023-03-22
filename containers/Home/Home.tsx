@@ -1,11 +1,10 @@
-import { History } from "@/types/History";
-import { Text } from "@/components/Text/Text";
+import { useParallax } from "react-scroll-parallax";
 import { Line } from "@/components/Line/Line";
 import { Link } from "@/components/Link/Link";
 import { Particles } from "@/components/Particles/Particles";
+import { Text } from "@/components/Text/Text";
 import { Timeline } from "@/components/Timeline/Timeline";
-import { useParallax } from "react-scroll-parallax";
-import { useOrientation } from "@/components/Orientation/Orientation";
+import { History } from "@/types/History";
 import { home } from "./Home.css";
 
 interface HomeProps {
@@ -13,9 +12,6 @@ interface HomeProps {
 }
 
 export const Home = ({ history }: HomeProps) => {
-  const orientation = useOrientation();
-  console.log(orientation);
-
   const topLeftSlide = useParallax<HTMLSpanElement>({
     shouldAlwaysCompleteAnimation: true,
     translateX: ["0%", "50%"],

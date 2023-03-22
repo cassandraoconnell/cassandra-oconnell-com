@@ -4,7 +4,7 @@ import Head from "next/head";
 import { Experience, History } from "@/types/History";
 import { Home } from "@/containers/Home/Home";
 import { ParallaxProvider } from "react-scroll-parallax";
-import { OrientationProvider } from "@/components/Orientation/Orientation";
+import { ViewProvider } from "@/components/View/View";
 import "@/style/global.css";
 
 export default function HomePage({
@@ -23,9 +23,9 @@ export default function HomePage({
         />
       </Head>
       <ParallaxProvider>
-        <OrientationProvider>
+        <ViewProvider>
           <Home history={data.history} />
-        </OrientationProvider>
+        </ViewProvider>
       </ParallaxProvider>
     </>
   );

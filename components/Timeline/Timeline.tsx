@@ -1,5 +1,6 @@
 import { Line } from "@/components/Line/Line";
 import { Text } from "@/components/Text/Text";
+import { useView } from "@/components/View/View";
 import { History } from "@/types/History";
 import { timeline } from "./Timeline.css";
 import { getYears } from "./Timeline.helpers";
@@ -9,7 +10,9 @@ interface TimelineProps {
 }
 
 export const Timeline = ({ history }: TimelineProps) => {
+  const view = useView();
   const years = getYears({ history });
+  console.log(years);
 
   return (
     <div className={timeline.container}>

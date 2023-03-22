@@ -69,7 +69,6 @@ export const home = {
   overview: {
     container: style({
       display: "flex",
-      height: "100vh",
       margin: "auto",
       width: "85%",
     }),

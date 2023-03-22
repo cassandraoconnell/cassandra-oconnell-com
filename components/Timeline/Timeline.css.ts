@@ -3,7 +3,7 @@ import { style } from "@vanilla-extract/css";
 
 export const timeline = {
   container: style({
-    height: "100%",
+    height: "100vh",
     position: "relative",
   }),
   lines: {
