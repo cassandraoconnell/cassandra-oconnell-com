@@ -1,24 +1,42 @@
-import { spacing } from "@/style/tokens";
 import { style } from "@vanilla-extract/css";
+import { colors, spacing } from "@/style/tokens";
+import { border } from "@/style/primitives/border.css";
+import { text } from "@/style/primitives/text.css";
 
 export const timeline = {
-  container: style({
-    height: "100vh",
-    position: "relative",
-  }),
-  lines: {
+  container: style([
+    border.left,
+    {
+      height: "100vh",
+      position: "relative",
+    },
+  ]),
+
+  ticks: {
     container: style({
-      columnGap: spacing.extraSmall,
-      display: "grid",
-      gridTemplateColumns: `${spacing.medium}px 1fr`,
+      display: "flex",
+      flexDirection: "column",
       height: "100%",
-      position: "absolute",
       justifyContent: "space-between",
+      position: "absolute",
     }),
 
-    year: style({
-      height: "fit-content",
-      transform: "translateY(-50%)",
-    }),
+    tick: style([
+      border.bottom,
+      text.senary,
+      {
+        color: colors.gray.light,
+        position: "relative",
+        width: spacing.md,
+
+        "::after": {
+          content: "attr(data-year)",
+          left: `calc(100% + ${spacing.xs}px)`,
+          lineHeight: 1,
+          position: "absolute",
+          transform: "translateY(-50%)",
+        },
+      },
+    ]),
   },
 };

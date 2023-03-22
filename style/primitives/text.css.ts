@@ -1,19 +1,15 @@
 import { style, styleVariants } from "@vanilla-extract/css";
-import { breakpoints, colors, typography } from "@/style/tokens";
+import { breakpoints, colors } from "@/style/tokens";
 
-export const text = style({
-  fontFamily: typography.fontFamily,
+const base = style({
+  color: colors.white,
+  fontFamily: "var(--font)",
   margin: 0,
   padding: 0,
 });
 
-export const textColorVariants = styleVariants({
-  primary: { color: colors.white },
-  secondary: { color: colors.gray.light },
-});
-
-export const textSizeVariants = styleVariants({
-  large: {
+const size = styleVariants({
+  lg: {
     fontSize: 128,
     lineHeight: 1,
 
@@ -44,7 +40,7 @@ export const textSizeVariants = styleVariants({
     },
   },
 
-  medium: {
+  md: {
     fontSize: 44,
     lineHeight: "1.2",
 
@@ -74,7 +70,7 @@ export const textSizeVariants = styleVariants({
       },
     },
   },
-  small: {
+  sm: {
     fontSize: 20,
     lineHeight: "1.5",
 
@@ -106,7 +102,16 @@ export const textSizeVariants = styleVariants({
   },
 });
 
-export const textWeightVariants = styleVariants({
+const weight = styleVariants({
   bold: { fontWeight: "900" },
-  normal: { fontWeight: "400" },
+  regular: { fontWeight: "400" },
+});
+
+export const text = styleVariants({
+  primary: [base, size.lg, weight.bold],
+  secondary: [base, size.lg, weight.regular],
+  tertiary: [base, size.md, weight.bold],
+  quaternary: [base, size.md, weight.regular],
+  quinary: [base, size.sm, weight.bold],
+  senary: [base, size.sm, weight.regular],
 });

@@ -1,36 +1,37 @@
+import classNames from "classnames";
+import Link from "next/link";
 import { useParallax } from "react-scroll-parallax";
-import { Line } from "@/components/Line/Line";
-import { Link } from "@/components/Link/Link";
 import { Particles } from "@/components/Particles/Particles";
-import { Text } from "@/components/Text/Text";
 import { Timeline } from "@/components/Timeline/Timeline";
 import { History } from "@/types/History";
 import { home } from "./Home.css";
+import { text } from "@/style/primitives/text.css";
+import { link } from "@/style/primitives/link.css";
 
 interface HomeProps {
   history?: History;
 }
 
 export const Home = ({ history }: HomeProps) => {
-  const topLeftSlide = useParallax<HTMLSpanElement>({
+  const topLeftSlide = useParallax<HTMLHeadingElement>({
     shouldAlwaysCompleteAnimation: true,
     translateX: ["0%", "50%"],
     translateY: [0, 0],
   });
 
-  const topRightSlide = useParallax<HTMLSpanElement>({
+  const topRightSlide = useParallax<HTMLHeadingElement>({
     shouldAlwaysCompleteAnimation: true,
     translateX: ["0%", "-50%"],
     translateY: [0, 0],
   });
 
-  const bottomLeftSlide = useParallax<HTMLSpanElement>({
+  const bottomLeftSlide = useParallax<HTMLHeadingElement>({
     shouldAlwaysCompleteAnimation: true,
     translateX: ["0%", "50%"],
     translateY: [0, 0],
   });
 
-  const bottomRightSlide = useParallax<HTMLSpanElement>({
+  const bottomRightSlide = useParallax<HTMLHeadingElement>({
     shouldAlwaysCompleteAnimation: true,
     translateX: ["0%", "-50%"],
     translateY: [0, 0],
@@ -40,112 +41,88 @@ export const Home = ({ history }: HomeProps) => {
     <>
       <div className={home.introduction.container}>
         <div className={home.introduction.name}>
-          <Text as="h2" color="primary" size="small" weight="bold">
-            Cassandra O&apos;Connell
-          </Text>
+          <h2 className={text.quinary}>Cassandra O&apos;Connell</h2>
         </div>
-        <span ref={topLeftSlide.ref}>
-          <Text as="h1" color="primary" size="large" weight="normal">
-            I&apos;m a software engineer
-          </Text>
-        </span>
-        <span ref={topRightSlide.ref}>
-          <Text as="h1" color="primary" size="large" weight="normal">
-            focused on building
-          </Text>
-        </span>
-        <span ref={bottomLeftSlide.ref}>
-          <Text as="h1" color="primary" size="large" weight="bold">
-            reliable and engaging
-          </Text>
-        </span>
-        <span ref={bottomRightSlide.ref}>
-          <Text as="h1" color="primary" size="large" weight="bold">
-            web applications.
-          </Text>
-        </span>
+        <h1 className={text.secondary} ref={topLeftSlide.ref}>
+          I&apos;m a software engineer
+        </h1>
+        <h1 className={text.secondary} ref={topRightSlide.ref}>
+          focused on building
+        </h1>
+        <h1 className={text.primary} ref={bottomLeftSlide.ref}>
+          reliable and engaging
+        </h1>
+        <h1 className={text.primary} ref={bottomRightSlide.ref}>
+          web applications.
+        </h1>
       </div>
       <div className={home.overview.container}>
         <div className={home.overview.left}>
-          <Text as="p" color="primary" size="medium" weight="normal">
+          <p className={text.quaternary}>
             I love taking on new technical challenges and thrive on solving
             unique software problems. I architect applications to be built on a
             solid foundation, ensuring they run smoothly at scale while allowing
             for quick iteration. My expertise lies in front-end software
             architecture and performance optimization, but I have experience
             writing code across the stack.
-          </Text>
+          </p>
         </div>
         <div className={home.overview.right}>
           {history ? <Timeline history={history} /> : null}
         </div>
       </div>
       <div className={home.contact.container}>
-        <div className={home.contact.gridline}>
-          <Line direction="horizontal" />
-        </div>
-        <Text as="h2" color="primary" size="large" weight="bold">
-          Let&apos;s connect.
-        </Text>
+        <h2 className={text.primary}>Let&apos;s connect.</h2>
         <div className={home.contact.details.container}>
           <div className={home.contact.details.item.container}>
-            <Text as="h3" color="primary" size="medium" weight="bold">
-              Email
-            </Text>
-            <Text as="p" color="primary" size="medium" weight="normal">
-              oconnecl@pm.me
-            </Text>
+            <h3 className={text.tertiary}>Email</h3>
+            <p className={text.quaternary}>oconnecl@pm.me</p>
           </div>
           <div className={home.contact.details.item.container}>
-            <Text as="h3" color="primary" size="medium" weight="bold">
-              Around the web
-            </Text>
+            <h3 className={text.tertiary}>Around the web</h3>
             <div className={home.contact.details.item.list}>
-              <Text as="p" color="primary" size="medium" weight="normal">
-                <Link
-                  href="https://github.com/cassandraoconnell"
-                  target="_blank"
-                >
-                  Github
-                </Link>
-              </Text>
-              <Text as="p" color="primary" size="medium" weight="normal">
-                <Link
-                  href="https://www.linkedin.com/in/cassandra-o-connell-7725561aa"
-                  target="_blank"
-                >
-                  LinkedIn
-                </Link>
-              </Text>
-              <Text as="p" color="primary" size="medium" weight="normal">
-                <Link href="https://twitter.com/codessandra" target="_blank">
-                  Twitter
-                </Link>
-              </Text>
+              <Link
+                className={classNames(link, text.quaternary)}
+                href="https://github.com/cassandraoconnell"
+                target="_blank"
+              >
+                Github
+              </Link>
+
+              <Link
+                className={classNames(link, text.quaternary)}
+                href="https://www.linkedin.com/in/cassandra-o-connell-7725561aa"
+                target="_blank"
+              >
+                LinkedIn
+              </Link>
+              <Link
+                className={classNames(link, text.quaternary)}
+                href="https://twitter.com/codessandra"
+                target="_blank"
+              >
+                Twitter
+              </Link>
             </div>
           </div>
           <div className={home.contact.details.item.container}>
-            <Text as="h3" color="primary" size="medium" weight="bold">
-              Resume
-            </Text>
-            <Text as="p" color="primary" size="medium" weight="normal">
-              cassandra-oconnell.pdf
-            </Text>
+            <h3 className={text.tertiary}>Resume</h3>
+            <h3 className={text.quaternary}>cassandra-oconnell.pdf</h3>
           </div>
         </div>
         <div className={home.contact.footer}>
-          <Line direction="horizontal" />
-          <Text as="p" color="primary" size="small" weight="normal">
+          <p className={text.senary}>
             This site was designed and developed by Cassandra O’Connell. It was
             built in Next.js and Typescript—you can see the code{" "}
             <Link
+              className={classNames(link, text.senary)}
               href="https://github.com/cassandraoconnell/cassandra-oconnell-com"
               target="_blank"
             >
               here
             </Link>
             .
-          </Text>
+          </p>
         </div>
       </div>
     </>

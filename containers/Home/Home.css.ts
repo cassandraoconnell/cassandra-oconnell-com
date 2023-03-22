@@ -7,9 +7,9 @@ export const home = {
       alignItems: "center",
       display: "flex",
       flexDirection: "column",
-      gap: spacing.extraLarge,
+      gap: spacing.xl,
       justifyContent: "center",
-      marginTop: spacing.medium,
+      marginTop: spacing.md,
       position: "relative",
       textAlign: "center",
       height: "100%",
@@ -18,7 +18,7 @@ export const home = {
       container: style({
         display: "flex",
         flexDirection: "column",
-        gap: spacing.large,
+        gap: spacing.lg,
         width: "50%",
       }),
       item: {
@@ -31,7 +31,7 @@ export const home = {
         list: style({
           display: "flex",
           flexDirection: "column",
-          gap: spacing.extraSmall,
+          gap: spacing.xs,
         }),
       },
     },
@@ -39,14 +39,14 @@ export const home = {
       bottom: 0,
       display: "flex",
       flexDirection: "column",
-      gap: spacing.medium,
-      paddingBottom: spacing.medium,
+      gap: spacing.md,
+      paddingBottom: spacing.md,
       position: "absolute",
       width: "100%",
     }),
     gridline: style({
       position: "absolute",
-      top: spacing.medium,
+      top: spacing.md,
       width: "100%",
     }),
   },
@@ -62,7 +62,7 @@ export const home = {
       textAlign: "center",
     }),
     name: style({
-      top: spacing.medium,
+      top: spacing.md,
       position: "absolute",
     }),
   },
@@ -75,7 +75,7 @@ export const home = {
     left: style({
       flex: 1,
       height: "100%",
-      padding: `${spacing.medium}px ${spacing.large}px 0 0`,
+      padding: `${spacing.md}px ${spacing.lg}px 0 0`,
       width: "50%",
     }),
     right: style({
