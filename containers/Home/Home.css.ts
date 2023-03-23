@@ -12,7 +12,6 @@ export const home = {
       marginTop: spacing.md,
       position: "relative",
       textAlign: "center",
-      height: "100%",
     }),
     details: {
       container: style({
@@ -72,15 +71,9 @@ export const home = {
       margin: "auto",
       width: "85%",
     }),
-    left: style({
-      flex: 1,
-      height: "100%",
-      padding: `${spacing.md}px ${spacing.lg}px 0 0`,
-      width: "50%",
-    }),
-    right: style({
-      height: "100%",
-      width: "50%",
+
+    section: style({
+      width: "100%",
     }),
   },
 };

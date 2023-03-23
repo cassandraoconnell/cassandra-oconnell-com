@@ -3,7 +3,7 @@ import { spacing } from "@/style/tokens";
 
 export const maskImage = createVar();
 
-export const node = {
+export const info = {
   container: style({
     height: "100%",
     width: "100%",

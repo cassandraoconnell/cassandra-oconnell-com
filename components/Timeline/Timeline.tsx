@@ -2,8 +2,9 @@ import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useView } from "@/components/View/View";
 import { History } from "@/types/History";
 import { height, timeline } from "./Timeline.css";
-import { getYears } from "./Timeline.helpers";
-import { Node } from "./Node/Node";
+import { getYears, getYearsReversed } from "./Timeline.helpers";
+import { Block } from "./Block/Block";
+import { Info } from "./Info/Info";
 
 interface TimelineProps {
   history: History;
@@ -12,18 +13,26 @@ interface TimelineProps {
 export const Timeline = ({ history }: TimelineProps) => {
   const view = useView();
   const years = getYears({ history });
+  const yearsReversed = getYearsReversed({ years });
 
   return (
     <div
       className={timeline.container}
-      style={assignInlineVars({ [height]: `${view.height}px` })}
+      style={assignInlineVars({
+        [height]: `${view.height * history.experience.length}px`,
+      })}
     >
       <div className={timeline.ticks.container}>
-        {years.map((year) => (
-          <div className={timeline.ticks.tick} data-year={year} key={year} />
-        ))}
+        <>
+          {yearsReversed.map((year) => (
+            <div className={timeline.ticks.tick} data-year={year} key={year} />
+          ))}
+          {history.experience.map((experience) => (
+            <Block key={experience.start} />
+          ))}
+        </>
       </div>
-      <Node experience={history.experience[0]} />
+      <Info experience={history.experience[0]} />
     </div>
   );
 };

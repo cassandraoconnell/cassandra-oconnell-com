@@ -3,7 +3,6 @@ import { breakpoints, colors } from "@/style/tokens";
 
 const base = style({
   color: colors.white,
-  fontFamily: "var(--font)",
   margin: 0,
   padding: 0,
 });

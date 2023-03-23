@@ -7,12 +7,15 @@ import { History } from "@/types/History";
 import { home } from "./Home.css";
 import { text } from "@/style/primitives/text.css";
 import { link } from "@/style/primitives/link.css";
+import { useView } from "@/components/View/View";
 
 interface HomeProps {
   history?: History;
 }
 
 export const Home = ({ history }: HomeProps) => {
+  const view = useView();
+
   const topLeftSlide = useParallax<HTMLHeadingElement>({
     shouldAlwaysCompleteAnimation: true,
     translateX: ["0%", "50%"],
@@ -57,7 +60,7 @@ export const Home = ({ history }: HomeProps) => {
         </h1>
       </div>
       <div className={home.overview.container}>
-        <div className={home.overview.left}>
+        <div className={home.overview.section}>
           <p className={text.quaternary}>
             I love taking on new technical challenges and thrive on solving
             unique software problems. I architect applications to be built on a
@@ -67,7 +70,7 @@ export const Home = ({ history }: HomeProps) => {
             writing code across the stack.
           </p>
         </div>
-        <div className={home.overview.right}>
+        <div className={home.overview.section}>
           {history ? <Timeline history={history} /> : null}
         </div>
       </div>

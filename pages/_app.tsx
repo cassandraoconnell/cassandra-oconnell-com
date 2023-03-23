@@ -9,8 +9,13 @@ const font = Darker_Grotesque({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${font.variable}`}>
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${font.style.fontFamily};
+        }
+      `}</style>
       <Component {...pageProps} />
-    </main>
+    </>
   );
 }

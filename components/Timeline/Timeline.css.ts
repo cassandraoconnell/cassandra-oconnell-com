@@ -6,22 +6,22 @@ import { text } from "@/style/primitives/text.css";
 export const height = createVar();
 
 export const timeline = {
-  container: style([
-    border.left,
-    {
-      height,
-      position: "relative",
-    },
-  ]),
+  container: style({
+    height,
+  }),
 
   ticks: {
-    container: style({
-      display: "flex",
-      flexDirection: "column",
-      height: "100%",
-      justifyContent: "space-between",
-      position: "absolute",
-    }),
+    container: style([
+      border.left,
+      {
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+        justifyContent: "space-between",
+        position: "sticky",
+        top: 0,
+      },
+    ]),
 
     tick: style([
       border.bottom,
