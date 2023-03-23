@@ -1,13 +1,15 @@
-import { style } from "@vanilla-extract/css";
+import { createVar, style } from "@vanilla-extract/css";
 import { colors, spacing } from "@/style/tokens";
 import { border } from "@/style/primitives/border.css";
 import { text } from "@/style/primitives/text.css";
+
+export const height = createVar();
 
 export const timeline = {
   container: style([
     border.left,
     {
-      height: "100vh",
+      height,
       position: "relative",
     },
   ]),
