@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 interface ViewContextValue {
   height: number;
   orientation: "horizontal" | "vertical";
+  scroll: number;
   width: number;
 }
 
@@ -22,6 +23,7 @@ export const useView = () => {
 
 export const ViewProvider = ({ children }: React.PropsWithChildren) => {
   const [height, setHeight] = useState(0);
+  const [scroll, setScroll] = useState(0);
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -39,13 +41,26 @@ export const ViewProvider = ({ children }: React.PropsWithChildren) => {
     };
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => {
+      setScroll(window.scrollY);
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   const value = useMemo<ViewContextValue>(
     () => ({
       height,
       orientation: height > width ? "vertical" : "horizontal",
+      scroll,
       width,
     }),
-    [height, width]
+    [height, scroll, width]
   );
 
   return (

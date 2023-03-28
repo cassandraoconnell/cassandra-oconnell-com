@@ -2,12 +2,13 @@ import { createVar, style } from "@vanilla-extract/css";
 import { spacing } from "@/style/tokens";
 
 export const maskImage = createVar();
+export const opacity = createVar();
 
 export const info = {
   container: style({
-    marginLeft: "25%",
+    opacity,
     position: "absolute",
-    width: "50%",
+    width: "70%",
   }),
 
   company: {

@@ -1,6 +1,6 @@
 import { text } from "@/style/primitives/text.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { maskImage, info } from "./Info.css";
+import { info, maskImage, opacity } from "./Info.css";
 
 export interface InfoProps {
   company: string;
@@ -15,10 +15,16 @@ export const Info = ({
   description,
   job,
   logoUrl,
+  opacity: propsOpacity,
   span,
-}: InfoProps) => {
+}: InfoProps & { opacity: number }) => {
   return (
-    <div className={info.container}>
+    <div
+      className={info.container}
+      style={assignInlineVars({
+        [opacity]: `${propsOpacity}`,
+      })}
+    >
       <div className={info.company.container}>
         <div
           className={info.company.logo}

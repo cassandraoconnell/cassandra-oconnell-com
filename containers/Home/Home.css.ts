@@ -51,12 +51,11 @@ export const home = {
         padding: `${spacing.md}px ${spacing.sm}px`,
       },
     ]),
-    gridline: style({
-      position: "absolute",
-      top: spacing.md,
-      width: "100%",
-    }),
   },
+  description: style({
+    margin: "auto",
+    width: "85%",
+  }),
   introduction: {
     container: style({
       alignItems: "center",
@@ -71,17 +70,6 @@ export const home = {
     name: style({
       top: spacing.md,
       position: "absolute",
-    }),
-  },
-  overview: {
-    container: style({
-      display: "flex",
-      margin: "auto",
-      width: "85%",
-    }),
-
-    section: style({
-      width: "100%",
     }),
   },
 };

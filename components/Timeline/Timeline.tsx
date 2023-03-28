@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useRef, useState } from "react";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { useView } from "@/components/View/View";
 import { History } from "@/types/History";
@@ -9,22 +10,36 @@ import {
 import { TimelineRenderer } from "./Timeline.helpers";
 import { Block } from "./Block/Block";
 import { Info } from "./Info/Info";
-import { useMemo } from "react";
 
 interface TimelineProps {
   history: History;
 }
 
 export const Timeline = ({ history }: TimelineProps) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const view = useView();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const renderer = useMemo(() => {
     return new TimelineRenderer({ history });
   }, [history]);
 
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const top = scrollContainerRef.current.offsetTop;
+
+      if (view.scroll >= top) {
+        const timelineScroll = view.scroll - top;
+        setActiveIndex(Math.ceil(timelineScroll / view.height) - 1);
+      }
+    }
+  }, [view.height, view.scroll]);
+
   return (
     <div
       className={timeline.scrollContainer}
+      ref={scrollContainerRef}
       style={assignInlineVars({
         [scrollContainerHeight]: `${view.height * history.experience.length}px`,
       })}
@@ -37,9 +52,6 @@ export const Timeline = ({ history }: TimelineProps) => {
       >
         <div className={timeline.ticks.container}>
           <>
-            {renderer.blocks.map((block) => (
-              <Block key={`${block.top}-${block.bottom}`} {...block} />
-            ))}
             {renderer.years.map((year) => (
               <div
                 className={timeline.ticks.tick}
@@ -47,11 +59,18 @@ export const Timeline = ({ history }: TimelineProps) => {
                 key={year}
               />
             ))}
+            {renderer.blocks.map((block, index) => (
+              <Block
+                key={`${block.top}-${block.bottom}`}
+                isActive={activeIndex === index}
+                {...block}
+              />
+            ))}
           </>
         </div>
         <div className={timeline.info}>
-          {renderer.info.map((info) => (
-            <Info key={info.span} {...info} />
+          {renderer.info.map((info, index) => (
+            <Info key={info.span} opacity={index === 0 ? 1 : 0} {...info} />
           ))}
         </div>
       </div>

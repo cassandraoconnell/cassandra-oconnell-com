@@ -8,13 +8,16 @@ export const scrollContainerHeight = createVar();
 
 export const timeline = {
   container: style({
-    height: "100vh",
-    padding: `${spacing.md}px 0`,
+    height: containerHeight,
     position: "sticky",
     top: 0,
   }),
 
   info: style({
+    alignItems: "center",
+    display: "flex",
+    height: "100%",
+    justifyContent: "flex-end",
     position: "relative",
   }),
 

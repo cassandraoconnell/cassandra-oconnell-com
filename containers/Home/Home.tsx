@@ -7,15 +7,12 @@ import { History } from "@/types/History";
 import { home } from "./Home.css";
 import { text } from "@/style/primitives/text.css";
 import { link } from "@/style/primitives/link.css";
-import { useView } from "@/components/View/View";
 
 interface HomeProps {
   history?: History;
 }
 
 export const Home = ({ history }: HomeProps) => {
-  const view = useView();
-
   const topLeftSlide = useParallax<HTMLHeadingElement>({
     shouldAlwaysCompleteAnimation: true,
     translateX: ["0%", "50%"],
@@ -59,21 +56,19 @@ export const Home = ({ history }: HomeProps) => {
           web applications.
         </h1>
       </div>
-      <div className={home.overview.container}>
-        <div className={home.overview.section}>
-          <p className={text.quaternary}>
-            I love taking on new technical challenges and thrive on solving
-            unique software problems. I architect applications to be built on a
-            solid foundation, ensuring they run smoothly at scale while allowing
-            for quick iteration. My expertise lies in front-end software
-            architecture and performance optimization, but I have experience
-            writing code across the stack.
-          </p>
-        </div>
-        <div className={home.overview.section}>
-          {history ? <Timeline history={history} /> : null}
-        </div>
+      <div className={home.description}>
+        <p className={text.quaternary}>
+          I love taking on new technical challenges and thrive on solving unique
+          software problems. I architect applications to be built on a solid
+          foundation, ensuring they run smoothly at scale while allowing for
+          quick iteration. My expertise lies in front-end software architecture
+          and performance optimization, but I have experience writing code
+          across the stack.
+        </p>
       </div>
+
+      {history ? <Timeline history={history} /> : null}
+
       <div className={home.contact.container}>
         <div className={home.contact.connect.container}>
           <h2 className={text.primary}>Let&apos;s connect.</h2>

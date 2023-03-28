@@ -6,10 +6,10 @@ export interface BlockProps {
   top: string;
 }
 
-export const Block = (props: BlockProps) => {
+export const Block = (props: BlockProps & { isActive: boolean }) => {
   return (
     <div
-      className={block}
+      className={props.isActive ? block.active : block.inactive}
       style={assignInlineVars({
         [bottom]: props.bottom,
         [top]: props.top,
