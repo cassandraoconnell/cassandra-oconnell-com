@@ -1,5 +1,19 @@
-import { block } from "./Block.css";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
+import { bottom, block, top } from "./Block.css";
 
-export const Block = () => {
-  return <div className={block} />;
+export interface BlockProps {
+  bottom: string;
+  top: string;
+}
+
+export const Block = (props: BlockProps) => {
+  return (
+    <div
+      className={block}
+      style={assignInlineVars({
+        [bottom]: props.bottom,
+        [top]: props.top,
+      })}
+    />
+  );
 };

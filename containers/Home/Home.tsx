@@ -75,42 +75,44 @@ export const Home = ({ history }: HomeProps) => {
         </div>
       </div>
       <div className={home.contact.container}>
-        <h2 className={text.primary}>Let&apos;s connect.</h2>
-        <div className={home.contact.details.container}>
-          <div className={home.contact.details.item.container}>
-            <h3 className={text.tertiary}>Email</h3>
-            <p className={text.quaternary}>oconnecl@pm.me</p>
-          </div>
-          <div className={home.contact.details.item.container}>
-            <h3 className={text.tertiary}>Around the web</h3>
-            <div className={home.contact.details.item.list}>
-              <Link
-                className={classNames(link, text.quaternary)}
-                href="https://github.com/cassandraoconnell"
-                target="_blank"
-              >
-                Github
-              </Link>
-
-              <Link
-                className={classNames(link, text.quaternary)}
-                href="https://www.linkedin.com/in/cassandra-o-connell-7725561aa"
-                target="_blank"
-              >
-                LinkedIn
-              </Link>
-              <Link
-                className={classNames(link, text.quaternary)}
-                href="https://twitter.com/codessandra"
-                target="_blank"
-              >
-                Twitter
-              </Link>
+        <div className={home.contact.connect.container}>
+          <h2 className={text.primary}>Let&apos;s connect.</h2>
+          <div className={home.contact.connect.details.container}>
+            <div className={home.contact.connect.details.item.container}>
+              <h3 className={text.tertiary}>Email</h3>
+              <p className={text.quaternary}>oconnecl@pm.me</p>
             </div>
-          </div>
-          <div className={home.contact.details.item.container}>
-            <h3 className={text.tertiary}>Resume</h3>
-            <h3 className={text.quaternary}>cassandra-oconnell.pdf</h3>
+            <div className={home.contact.connect.details.item.container}>
+              <h3 className={text.tertiary}>Around the web</h3>
+              <div className={home.contact.connect.details.item.list}>
+                <Link
+                  className={classNames(link, text.quaternary)}
+                  href="https://github.com/cassandraoconnell"
+                  target="_blank"
+                >
+                  Github
+                </Link>
+
+                <Link
+                  className={classNames(link, text.quaternary)}
+                  href="https://www.linkedin.com/in/cassandra-o-connell-7725561aa"
+                  target="_blank"
+                >
+                  LinkedIn
+                </Link>
+                <Link
+                  className={classNames(link, text.quaternary)}
+                  href="https://twitter.com/codessandra"
+                  target="_blank"
+                >
+                  Twitter
+                </Link>
+              </div>
+            </div>
+            <div className={home.contact.connect.details.item.container}>
+              <h3 className={text.tertiary}>Resume</h3>
+              <h3 className={text.quaternary}>cassandra-oconnell.pdf</h3>
+            </div>
           </div>
         </div>
         <div className={home.contact.footer}>

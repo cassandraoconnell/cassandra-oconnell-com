@@ -3,11 +3,23 @@ import { colors, spacing } from "@/style/tokens";
 import { border } from "@/style/primitives/border.css";
 import { text } from "@/style/primitives/text.css";
 
-export const height = createVar();
+export const containerHeight = createVar();
+export const scrollContainerHeight = createVar();
 
 export const timeline = {
   container: style({
-    height,
+    height: "100vh",
+    padding: `${spacing.md}px 0`,
+    position: "sticky",
+    top: 0,
+  }),
+
+  info: style({
+    position: "relative",
+  }),
+
+  scrollContainer: style({
+    height: scrollContainerHeight,
   }),
 
   ticks: {
@@ -16,9 +28,9 @@ export const timeline = {
       {
         display: "flex",
         flexDirection: "column",
-        height: "100vh",
+        height: containerHeight,
         justifyContent: "space-between",
-        position: "sticky",
+        position: "absolute",
         top: 0,
       },
     ]),

@@ -1,48 +1,17 @@
-import { Experience, History } from "@/types/History";
+import { History } from "@/types/History";
+import { BlockProps } from "./Block/Block";
+import { InfoProps } from "./Info/Info";
 
-export const YEAR_HEIGHT = 120;
-export const MONTH_HEIGHT = YEAR_HEIGHT / 12;
-
-export const getYears = (options: { history: History }): number[] => {
-  let earliest = Date.now();
-  let latest = Date.now();
-
-  for (const experience of options.history.experience) {
-    if (experience.start < earliest) {
-      earliest = experience.start;
-    }
-  }
-
-  const earliestYear = new Date(earliest).getFullYear();
-  const latestYear = new Date(latest).getFullYear();
-  const years = [];
-
-  for (let year = earliestYear; year <= latestYear; year++) {
-    years.push(year);
-  }
-
-  return years;
-};
-
-export const getYearsReversed = (options: { years: number[] }): number[] => {
-  return [...options.years].reverse();
-};
-
-type ExperienceRenderData = {
-  id: string;
-  position: {
-    bottom: number;
-    top: number;
+export class TimelineRenderer {
+  private _cache: {
+    blocks: BlockProps[] | null;
+    info: InfoProps[] | null;
+    years: number[] | null;
   };
-  span: string;
-} & Experience;
 
-export const getExperienceRenderData = (options: {
-  experience: Experience[];
-  years: number[];
-  yearsReversed: number[];
-}): ExperienceRenderData[] => {
-  const months = [
+  private readonly _history: History;
+
+  private readonly _months = [
     "January",
     "February",
     "March",
@@ -55,39 +24,90 @@ export const getExperienceRenderData = (options: {
     "October",
     "November",
     "December",
-  ];
+  ] as const;
 
-  const experienceRenderData: ExperienceRenderData[] = [];
-
-  for (const experience of options.experience) {
-    const start = new Date(experience.start);
-    const startMonth = start.getMonth();
-    const startYear = start.getFullYear();
-    const bottom =
-      YEAR_HEIGHT * options.years.indexOf(startYear) +
-      MONTH_HEIGHT * startMonth +
-      1;
-    const from = `${months[startMonth]} ${startYear}`;
-
-    let top = 0;
-    let to = "Present";
-    if (experience.end !== null) {
-      const end = new Date(experience.end);
-      const endMonth = end.getMonth();
-      const endYear = end.getFullYear();
-      top =
-        YEAR_HEIGHT * options.yearsReversed.indexOf(endYear) +
-        MONTH_HEIGHT * (12 - endMonth + 1);
-      to = `${months[endMonth]} ${endYear}`;
-    }
-
-    experienceRenderData.push({
-      ...experience,
-      id: `${experience.company}-${experience.job}`,
-      position: { bottom, top },
-      span: `${from} — ${to}`,
-    });
+  constructor(options: { history: History }) {
+    this._history = options.history;
+    this._cache = {
+      blocks: null,
+      info: null,
+      years: null,
+    };
   }
 
-  return experienceRenderData;
-};
+  get blocks() {
+    if (this._cache.blocks == null) {
+      this._cache.blocks = [];
+
+      const max = new Date(`January 1 ${this.years.at(0)}`).getTime();
+      const min = new Date(`January 1 ${this.years.at(-1)}`).getTime();
+
+      for (const experience of this._history.experience) {
+        const start = (experience.start - min) / (max - min);
+        const end = experience.end ? (experience.end - min) / (max - min) : 1;
+
+        this._cache.blocks.push({
+          bottom: `${start * 100}%`,
+          top: `${(1 - end) * 100}%`,
+        });
+      }
+    }
+
+    return this._cache.blocks;
+  }
+
+  get info() {
+    if (this._cache.info == null) {
+      this._cache.info = [];
+
+      for (const experience of this._history.experience) {
+        const startDate = new Date(experience.start);
+        const startMonth = this._months[startDate.getMonth()];
+        const startYear = startDate.getFullYear();
+        const start = `${startMonth} ${startYear}`;
+
+        let end = "Present";
+        if (experience.end) {
+          const endDate = new Date(experience.end);
+          const endMonth = this._months[endDate.getMonth()];
+          const endYear = endDate.getFullYear();
+          end = `${endMonth} ${endYear}`;
+        }
+
+        this._cache.info.push({
+          company: experience.company,
+          description: experience.description,
+          logoUrl: `url("${experience.logo}")`,
+          job: experience.job,
+          span: `${start} — ${end}`,
+        });
+      }
+    }
+
+    return this._cache.info;
+  }
+
+  get years() {
+    if (this._cache.years === null) {
+      this._cache.years = [];
+
+      let earliest = Date.now();
+      let latest = Date.now();
+
+      for (const experience of this._history.experience) {
+        if (experience.start < earliest) {
+          earliest = experience.start;
+        }
+      }
+
+      const earliestYear = new Date(earliest).getFullYear();
+      const latestYear = new Date(latest).getFullYear();
+
+      for (let year = latestYear; year >= earliestYear; year--) {
+        this._cache.years.push(year);
+      }
+    }
+
+    return this._cache.years;
+  }
+}

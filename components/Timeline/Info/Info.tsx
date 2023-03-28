@@ -1,35 +1,36 @@
 import { text } from "@/style/primitives/text.css";
-import { Experience } from "@/types/History";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { maskImage, info } from "./Info.css";
-import { formatDate } from "./Info.helpers";
 
-interface InfoProps {
-  experience: Experience;
+export interface InfoProps {
+  company: string;
+  description: string | null;
+  logoUrl: string;
+  job: string;
+  span: string;
 }
 
-export const Info = ({ experience }: InfoProps) => {
+export const Info = ({
+  company,
+  description,
+  job,
+  logoUrl,
+  span,
+}: InfoProps) => {
   return (
-    <>
-      <div className={info.container}>
-        <div className={info.info.container}>
-          <div className={info.info.company.container}>
-            <div
-              className={info.info.company.logo}
-              style={assignInlineVars({
-                [maskImage]: `url("${experience.logo}")`,
-              })}
-            />
-            <h4 className={text.quaternary}>{experience.company}</h4>
-          </div>
-          <h3 className={text.tertiary}>{experience.job}</h3>
-          <h5 className={text.quinary}>
-            {formatDate(experience.start)} &ndash;{" "}
-            {experience.end ? formatDate(experience.end) : "Present"}
-          </h5>
-          <p className={text.senary}>{experience.description}</p>
-        </div>
+    <div className={info.container}>
+      <div className={info.company.container}>
+        <div
+          className={info.company.logo}
+          style={assignInlineVars({
+            [maskImage]: logoUrl,
+          })}
+        />
+        <h4 className={text.quaternary}>{company}</h4>
       </div>
-    </>
+      <h3 className={text.tertiary}>{job}</h3>
+      <h5 className={text.quinary}>{span}</h5>
+      <p className={text.senary}>{description}</p>
+    </div>
   );
 };

@@ -1,48 +1,56 @@
+import { border } from "@/style/primitives/border.css";
 import { spacing } from "@/style/tokens";
 import { style } from "@vanilla-extract/css";
 
 export const home = {
   contact: {
     container: style({
-      alignItems: "center",
       display: "flex",
       flexDirection: "column",
-      gap: spacing.xl,
-      justifyContent: "center",
-      marginTop: spacing.md,
+      height: "100vh",
       position: "relative",
       textAlign: "center",
     }),
-    details: {
+    connect: {
       container: style({
+        alignItems: "center",
         display: "flex",
+        flex: 1,
         flexDirection: "column",
-        gap: spacing.lg,
-        width: "50%",
+        gap: spacing.xl,
+        justifyContent: "center",
+        width: "100%",
       }),
-      item: {
+
+      details: {
         container: style({
-          display: "grid",
-          gridTemplateColumns: "50% 50%",
-          textAlign: "left",
-          width: "100%",
-        }),
-        list: style({
           display: "flex",
           flexDirection: "column",
-          gap: spacing.xs,
+          gap: spacing.lg,
+          width: "50%",
         }),
+        item: {
+          container: style({
+            display: "grid",
+            gridTemplateColumns: "50% 50%",
+            textAlign: "left",
+            width: "100%",
+          }),
+          list: style({
+            display: "flex",
+            flexDirection: "column",
+            gap: spacing.xs,
+          }),
+        },
       },
     },
-    footer: style({
-      bottom: 0,
-      display: "flex",
-      flexDirection: "column",
-      gap: spacing.md,
-      paddingBottom: spacing.md,
-      position: "absolute",
-      width: "100%",
-    }),
+    footer: style([
+      border.top,
+      {
+        boxSizing: "border-box",
+        padding: `${spacing.md}px ${spacing.sm}px`,
+      },
+    ]),
     gridline: style({
       position: "absolute",
       top: spacing.md,
