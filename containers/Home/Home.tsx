@@ -111,7 +111,14 @@ export const Home = ({ history }: HomeProps) => {
             </div>
             <div className={home.contact.connect.details.item.container}>
               <h3 className={text.tertiary}>Resume</h3>
-              <h3 className={text.quaternary}>cassandra-oconnell.pdf</h3>
+              <Link
+                className={classNames(link, text.quaternary)}
+                download="cassandra-oconnell"
+                href="/cassandra-oconnell.pdf"
+                target="_blank"
+              >
+                cassandra-oconnell.pdf
+              </Link>
             </div>
           </div>
         </div>
