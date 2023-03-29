@@ -18,11 +18,9 @@ export default function HomePage({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ParallaxProvider>
-        <ViewProvider>
-          <Home history={data.history} />
-        </ViewProvider>
-      </ParallaxProvider>
+      <ViewProvider>
+        <Home history={data.history} />
+      </ViewProvider>
     </>
   );
 }

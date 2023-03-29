@@ -1,61 +1,21 @@
 import classNames from "classnames";
 import Link from "next/link";
-import { useParallax } from "react-scroll-parallax";
 import { Particles } from "@/components/Particles/Particles";
 import { Timeline } from "@/components/Timeline/Timeline";
 import { History } from "@/types/History";
 import { home } from "./Home.css";
 import { text } from "@/style/primitives/text.css";
 import { link } from "@/style/primitives/link.css";
+import { Introduction } from "@/components/Introduction/Introduction";
 
 interface HomeProps {
   history?: History;
 }
 
 export const Home = ({ history }: HomeProps) => {
-  const topLeftSlide = useParallax<HTMLHeadingElement>({
-    shouldAlwaysCompleteAnimation: true,
-    translateX: ["0%", "50%"],
-    translateY: [0, 0],
-  });
-
-  const topRightSlide = useParallax<HTMLHeadingElement>({
-    shouldAlwaysCompleteAnimation: true,
-    translateX: ["0%", "-50%"],
-    translateY: [0, 0],
-  });
-
-  const bottomLeftSlide = useParallax<HTMLHeadingElement>({
-    shouldAlwaysCompleteAnimation: true,
-    translateX: ["0%", "50%"],
-    translateY: [0, 0],
-  });
-
-  const bottomRightSlide = useParallax<HTMLHeadingElement>({
-    shouldAlwaysCompleteAnimation: true,
-    translateX: ["0%", "-50%"],
-    translateY: [0, 0],
-  });
-
   return (
     <>
-      <div className={home.introduction.container}>
-        <div className={home.introduction.name}>
-          <h2 className={text.quinary}>Cassandra O&apos;Connell</h2>
-        </div>
-        <h1 className={text.secondary} ref={topLeftSlide.ref}>
-          I&apos;m a software engineer
-        </h1>
-        <h1 className={text.secondary} ref={topRightSlide.ref}>
-          focused on building
-        </h1>
-        <h1 className={text.primary} ref={bottomLeftSlide.ref}>
-          reliable and engaging
-        </h1>
-        <h1 className={text.primary} ref={bottomRightSlide.ref}>
-          web applications.
-        </h1>
-      </div>
+      <Introduction />
       <div className={home.description}>
         <p className={text.quaternary}>
           I love taking on new technical challenges and thrive on solving unique

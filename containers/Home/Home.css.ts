@@ -56,20 +56,4 @@ export const home = {
     margin: "auto",
     width: "85%",
   }),
-  introduction: {
-    container: style({
-      alignItems: "center",
-      display: "flex",
-      flexDirection: "column",
-      height: "100vh",
-      justifyContent: "center",
-      overflowX: "hidden",
-      position: "relative",
-      textAlign: "center",
-    }),
-    name: style({
-      top: spacing.md,
-      position: "absolute",
-    }),
-  },
 };
