@@ -1,5 +1,5 @@
 import { createVar, style } from "@vanilla-extract/css";
-import { breakpoints, spacing } from "@/style/tokens";
+import { breakpoints, colors, spacing } from "@/style/tokens";
 import { border } from "@/style/primitives/border.css";
 
 export const headlineHeight = createVar();
@@ -16,13 +16,19 @@ export const introduction = {
       position: "relative",
       textAlign: "center",
     }),
+    gradient: style({
+      background: `linear-gradient(0deg, ${colors.black} 0%, transparent 30%)`,
+      bottom: 0,
+      left: 0,
+      position: "absolute",
+      right: 0,
+      top: 0,
+    }),
     name: style({
       top: spacing.md,
       position: "absolute",
     }),
   },
-
-  gradient: style({}),
 
   lede: {
     container: style({

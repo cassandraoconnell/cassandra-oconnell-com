@@ -43,6 +43,7 @@ const IntroductionContent = () => {
         })}
       >
         <Particles />
+        <div className={introduction.headline.gradient} />
         <div className={introduction.headline.name}>
           <h2 className={text.quinary}>Cassandra O&apos;Connell</h2>
         </div>
