@@ -3,6 +3,7 @@ import ReactParticles from "react-particles";
 import type { Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 import { colors } from "@/style/tokens";
+import { particles } from "./Particles.css";
 
 export const Particles = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,9 +18,7 @@ export const Particles = () => {
 
   return (
     <ReactParticles
-      /* className={
-        isLoading ? particlesVariants.loading : particlesVariants.loaded
-      } */
+      className={isLoading ? particles.loading : particles.loaded}
       init={onInit}
       loaded={onLoaded}
       options={{
@@ -87,6 +86,10 @@ export const Particles = () => {
           },
         },
         detectRetina: true,
+        fullScreen: {
+          zIndex: 0,
+          enable: false,
+        },
       }}
     />
   );

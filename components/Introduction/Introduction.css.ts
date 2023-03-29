@@ -22,8 +22,15 @@ export const introduction = {
     }),
   },
 
+  gradient: style({}),
+
   lede: {
-    container: style([
+    container: style({
+      margin: "auto",
+      width: "85%",
+    }),
+
+    text: style([
       border.right,
       {
         boxSizing: "border-box",

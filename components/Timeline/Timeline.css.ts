@@ -21,8 +21,10 @@ export const timeline = {
       flexDirection: "column",
       height: viewHeight,
       justifyContent: "center",
+      margin: "auto",
       position: "sticky",
       top: 0,
+      width: "85%",
     }),
 
     content: {
