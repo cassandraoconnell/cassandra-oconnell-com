@@ -65,6 +65,12 @@ export const info = {
         flexWrap: "wrap",
         gap: spacing.xs,
         padding: `${spacing.sm}px 0`,
+
+        "@media": {
+          [`screen and (max-width: ${breakpoints.sm}px)`]: {
+            justifyContent: "center",
+          },
+        },
       }),
 
       tag: style([
