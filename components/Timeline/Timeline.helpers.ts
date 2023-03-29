@@ -80,6 +80,7 @@ export class TimelineRenderer {
           logoUrl: `url("${experience.logo}")`,
           job: experience.job,
           span: `${start} — ${end}`,
+          tags: experience.tags,
         });
       }
     }

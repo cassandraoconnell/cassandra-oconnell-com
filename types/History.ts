@@ -5,6 +5,7 @@ export interface Experience {
   job: string;
   logo: string;
   start: number;
+  tags?: string[];
 }
 
 export interface History {

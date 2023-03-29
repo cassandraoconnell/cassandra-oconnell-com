@@ -38,7 +38,7 @@ export const getServerSideProps = async () => {
     const client = new MongoClient(uri);
 
     try {
-      const database = client.db("timeline"); // TODO - rename
+      const database = client.db("timeline");
 
       const experiences = await database
         .collection<Omit<Experience, "end"> & { end: number | null }>(

@@ -1,5 +1,6 @@
 import { createVar, style } from "@vanilla-extract/css";
 import { breakpoints, spacing } from "@/style/tokens";
+import { border } from "@/style/primitives/border.css";
 
 export const maskImage = createVar();
 
@@ -56,6 +57,25 @@ export const info = {
         maskSize: "auto",
         width: spacing.md,
       }),
+    },
+
+    tags: {
+      container: style({
+        display: "flex",
+        flexWrap: "wrap",
+        gap: spacing.xs,
+        padding: `${spacing.sm}px 0`,
+      }),
+
+      tag: style([
+        border.bottom,
+        border.left,
+        border.right,
+        border.top,
+        {
+          padding: `${spacing.xs}px ${spacing.sm}px`,
+        },
+      ]),
     },
   },
 };

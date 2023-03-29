@@ -1,5 +1,6 @@
-import { text } from "@/style/primitives/text.css";
+import classNames from "classnames";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
+import { text } from "@/style/primitives/text.css";
 import { info, maskImage } from "./Info.css";
 
 export interface InfoProps {
@@ -8,6 +9,7 @@ export interface InfoProps {
   logoUrl: string;
   job: string;
   span: string;
+  tags?: string[];
 }
 
 export const Info = ({
@@ -16,6 +18,7 @@ export const Info = ({
   job,
   logoUrl,
   span,
+  tags,
 }: InfoProps) => {
   return (
     <>
@@ -33,8 +36,19 @@ export const Info = ({
           <h4 className={text.quaternary}>{company}</h4>
         </div>
         <h3 className={text.tertiary}>{job}</h3>
-
         <p className={text.senary}>{description}</p>
+        {tags ? (
+          <div className={info.details.tags.container}>
+            {tags.map((tag) => (
+              <span
+                className={classNames(info.details.tags.tag, text.senary)}
+                key={tag}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        ) : null}
       </div>
     </>
   );
