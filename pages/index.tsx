@@ -41,12 +41,17 @@ export const getServerSideProps = async () => {
       const database = client.db("timeline"); // TODO - rename
 
       const experiences = await database
-        .collection<Experience>("experiences")
+        .collection<Omit<Experience, "end"> & { end: number | null }>(
+          "experiences"
+        )
         .find({}, { sort: { start: -1 } })
         .toArray();
 
       history = {
-        experience: experiences.map(({ _id, ...experience }) => experience),
+        experience: experiences.map(({ _id, ...experience }) => ({
+          ...experience,
+          end: experience.end || Date.now(),
+        })),
       };
     } catch (error) {
       // TODO - log somewhere

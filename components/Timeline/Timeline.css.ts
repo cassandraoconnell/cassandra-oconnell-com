@@ -3,57 +3,68 @@ import { colors, spacing } from "@/style/tokens";
 import { border } from "@/style/primitives/border.css";
 import { text } from "@/style/primitives/text.css";
 
-export const containerHeight = createVar();
-export const scrollContainerHeight = createVar();
+export const scrollHeight = createVar();
+export const viewHeight = createVar();
 
 export const timeline = {
-  container: style({
-    height: containerHeight,
-    position: "sticky",
-    top: 0,
-  }),
+  scroll: {
+    container: style({
+      height: scrollHeight,
+    }),
+  },
 
-  info: style({
-    alignItems: "center",
-    display: "flex",
-    height: "100%",
-    justifyContent: "flex-end",
-    position: "relative",
-  }),
+  view: {
+    container: style({
+      alignItems: "center",
+      boxSizing: "border-box",
+      display: "flex",
+      flexDirection: "column",
+      height: viewHeight,
+      justifyContent: "center",
+      position: "sticky",
+      top: 0,
+    }),
 
-  scrollContainer: style({
-    height: scrollContainerHeight,
-  }),
-
-  ticks: {
-    container: style([
-      border.left,
-      {
+    content: {
+      container: style({
         display: "flex",
         flexDirection: "column",
-        height: containerHeight,
+        height: "75%",
         justifyContent: "space-between",
-        position: "absolute",
-        top: 0,
-      },
-    ]),
-
-    tick: style([
-      border.bottom,
-      text.senary,
-      {
-        color: colors.gray.light,
         position: "relative",
-        width: spacing.md,
+        width: "100%",
+      }),
 
-        "::after": {
-          content: "attr(data-year)",
-          left: `calc(100% + ${spacing.xs}px)`,
-          lineHeight: 1,
-          position: "absolute",
-          transform: "translateY(-50%)",
-        },
+      ticks: {
+        container: style([
+          border.bottom,
+          {
+            borderBottomStyle: "dashed",
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          },
+        ]),
+
+        tick: style([
+          border.right,
+          text.senary,
+          {
+            borderRightStyle: "dashed",
+            color: colors.gray.light,
+            height: spacing.md,
+            position: "relative",
+
+            "::after": {
+              content: "attr(data-year)",
+              bottom: `calc(100% + ${spacing.xs}px)`,
+              lineHeight: 1,
+              position: "absolute",
+              transform: "translateX(-50%)",
+            },
+          },
+        ]),
       },
-    ]),
+    },
   },
 };

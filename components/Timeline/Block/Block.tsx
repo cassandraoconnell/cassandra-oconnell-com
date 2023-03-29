@@ -1,9 +1,9 @@
 import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { bottom, block, top } from "./Block.css";
+import { block, left, right } from "./Block.css";
 
 export interface BlockProps {
-  bottom: string;
-  top: string;
+  left: string;
+  right: string;
 }
 
 export const Block = (props: BlockProps & { isActive: boolean }) => {
@@ -11,8 +11,8 @@ export const Block = (props: BlockProps & { isActive: boolean }) => {
     <div
       className={props.isActive ? block.active : block.inactive}
       style={assignInlineVars({
-        [bottom]: props.bottom,
-        [top]: props.top,
+        [left]: props.left,
+        [right]: props.right,
       })}
     />
   );

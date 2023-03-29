@@ -12,18 +12,18 @@ export class TimelineRenderer {
   private readonly _history: History;
 
   private readonly _months = [
-    "January",
-    "February",
-    "March",
-    "April",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
     "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ] as const;
 
   constructor(options: { history: History }) {
@@ -44,11 +44,11 @@ export class TimelineRenderer {
 
       for (const experience of this._history.experience) {
         const start = (experience.start - min) / (max - min);
-        const end = experience.end ? (experience.end - min) / (max - min) : 1;
+        const end = (experience.end - min) / (max - min);
 
         this._cache.blocks.push({
-          bottom: `${start * 100}%`,
-          top: `${(1 - end) * 100}%`,
+          left: `${(1 - end) * 100}%`,
+          right: `${start * 100}%`,
         });
       }
     }
@@ -101,7 +101,7 @@ export class TimelineRenderer {
       }
 
       const earliestYear = new Date(earliest).getFullYear();
-      const latestYear = new Date(latest).getFullYear();
+      const latestYear = new Date(latest).getFullYear() + 1;
 
       for (let year = latestYear; year >= earliestYear; year--) {
         this._cache.years.push(year);

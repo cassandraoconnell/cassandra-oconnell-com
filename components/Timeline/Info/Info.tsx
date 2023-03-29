@@ -1,6 +1,6 @@
 import { text } from "@/style/primitives/text.css";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { info, maskImage, opacity } from "./Info.css";
+import { info, maskImage } from "./Info.css";
 
 export interface InfoProps {
   company: string;
@@ -15,28 +15,25 @@ export const Info = ({
   description,
   job,
   logoUrl,
-  opacity: propsOpacity,
   span,
-}: InfoProps & { opacity: number }) => {
+}: InfoProps) => {
   return (
-    <div
-      className={info.container}
-      style={assignInlineVars({
-        [opacity]: `${propsOpacity}`,
-      })}
-    >
-      <div className={info.company.container}>
-        <div
-          className={info.company.logo}
-          style={assignInlineVars({
-            [maskImage]: logoUrl,
-          })}
-        />
-        <h4 className={text.quaternary}>{company}</h4>
+    <>
+      <h1 className={text.primary}>{span}</h1>
+      <div className={info.details.container}>
+        <div className={info.details.company.container}>
+          <div
+            className={info.details.company.logo}
+            style={assignInlineVars({
+              [maskImage]: logoUrl,
+            })}
+          />
+          <h4 className={text.quaternary}>{company}</h4>
+        </div>
+        <h3 className={text.tertiary}>{job}</h3>
+
+        <p className={text.senary}>{description}</p>
       </div>
-      <h3 className={text.tertiary}>{job}</h3>
-      <h5 className={text.quinary}>{span}</h5>
-      <p className={text.senary}>{description}</p>
-    </div>
+    </>
   );
 };

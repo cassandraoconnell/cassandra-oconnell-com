@@ -1,22 +1,22 @@
 import { createVar, style, styleVariants } from "@vanilla-extract/css";
 import { colors, spacing } from "@/style/tokens";
 
-export const bottom = createVar();
-export const top = createVar();
+export const left = createVar();
+export const right = createVar();
 
 const base = style({
-  bottom,
-  borderBottomStyle: "solid",
+  bottom: 0,
   borderColor: colors.black,
-  borderTopStyle: "solid",
+  borderLeftStyle: "solid",
+  borderRightStyle: "solid",
   borderWidth: 2,
-  left: 0,
+  left,
   position: "absolute",
-  top,
+  right,
   transition: "0.2s",
 });
 
 export const block = styleVariants({
-  active: [base, { backgroundColor: colors.white, width: spacing.sm }],
-  inactive: [base, { backgroundColor: colors.gray.dark, width: spacing.xs }],
+  active: [base, { backgroundColor: colors.white, height: spacing.sm }],
+  inactive: [base, { backgroundColor: colors.gray.dark, height: spacing.xs }],
 });
