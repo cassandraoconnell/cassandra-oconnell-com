@@ -2,8 +2,8 @@ import { MongoClient } from "mongodb";
 import { InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { Experience, History } from "@/types/History";
-import { Home } from "@/containers/Home/Home";
-import { ParallaxProvider } from "react-scroll-parallax";
+import { Introduction } from "@/components/Introduction/Introduction";
+import { Timeline } from "@/components/Timeline/Timeline";
 import { ViewProvider } from "@/components/View/View";
 import "@/style/global.css";
 
@@ -18,9 +18,12 @@ export default function HomePage({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ViewProvider>
-        <Home history={data.history} />
-      </ViewProvider>
+      <main>
+        <ViewProvider>
+          <Introduction />
+          {data.history ? <Timeline history={data.history} /> : null}
+        </ViewProvider>
+      </main>
     </>
   );
 }

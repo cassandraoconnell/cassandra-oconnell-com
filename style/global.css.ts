@@ -6,3 +6,8 @@ globalStyle("html, body", {
   fontSize: 16,
   margin: 0,
 });
+
+globalStyle("main", {
+  margin: "auto",
+  width: "85%",
+});

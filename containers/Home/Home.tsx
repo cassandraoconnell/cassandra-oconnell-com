@@ -16,16 +16,6 @@ export const Home = ({ history }: HomeProps) => {
   return (
     <>
       <Introduction />
-      <div className={home.description}>
-        <p className={text.quaternary}>
-          I love taking on new technical challenges and thrive on solving unique
-          software problems. I architect applications to be built on a solid
-          foundation, ensuring they run smoothly at scale while allowing for
-          quick iteration. My expertise lies in front-end software architecture
-          and performance optimization, but I have experience writing code
-          across the stack.
-        </p>
-      </div>
 
       {history ? <Timeline history={history} /> : null}
 

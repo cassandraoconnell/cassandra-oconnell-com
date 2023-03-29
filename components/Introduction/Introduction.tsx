@@ -1,8 +1,12 @@
-import { text } from "@/style/primitives/text.css";
 import { ParallaxProvider, useParallax } from "react-scroll-parallax";
-import { introduction } from "./Introduction.css";
+import { assignInlineVars } from "@vanilla-extract/dynamic";
+import { useView } from "@/components/View/View";
+import { text } from "@/style/primitives/text.css";
+import { headlineHeight, introduction } from "./Introduction.css";
 
 const IntroductionContent = () => {
+  const view = useView();
+
   const topLeftSlide = useParallax<HTMLHeadingElement>({
     shouldAlwaysCompleteAnimation: true,
     translateX: ["0%", "50%"],
@@ -28,23 +32,43 @@ const IntroductionContent = () => {
   });
 
   return (
-    <div className={introduction.container}>
-      <div className={introduction.name}>
-        <h2 className={text.quinary}>Cassandra O&apos;Connell</h2>
+    <>
+      <div
+        className={introduction.headline.container}
+        style={assignInlineVars({
+          [headlineHeight]: `${
+            view.orientation === "horizontal" ? view.height : view.height / 2
+          }px`,
+        })}
+      >
+        <div className={introduction.headline.name}>
+          <h2 className={text.quinary}>Cassandra O&apos;Connell</h2>
+        </div>
+        <h1 className={text.secondary} ref={topLeftSlide.ref}>
+          I&apos;m a software engineer
+        </h1>
+        <h1 className={text.secondary} ref={topRightSlide.ref}>
+          focused on building
+        </h1>
+        <h1 className={text.primary} ref={bottomLeftSlide.ref}>
+          reliable and engaging
+        </h1>
+        <h1 className={text.primary} ref={bottomRightSlide.ref}>
+          web applications.
+        </h1>
       </div>
-      <h1 className={text.secondary} ref={topLeftSlide.ref}>
-        I&apos;m a software engineer
-      </h1>
-      <h1 className={text.secondary} ref={topRightSlide.ref}>
-        focused on building
-      </h1>
-      <h1 className={text.primary} ref={bottomLeftSlide.ref}>
-        reliable and engaging
-      </h1>
-      <h1 className={text.primary} ref={bottomRightSlide.ref}>
-        web applications.
-      </h1>
-    </div>
+      <div className={introduction.lede.container}>
+        <p className={text.quaternary}>
+          I love taking on new technical challenges and thrive on solving unique
+          software problems. I architect applications to be built on a solid
+          foundation, ensuring they run smoothly at scale while allowing for
+          quick iteration. My expertise lies in front-end software architecture
+          and performance optimization, but I have experience writing code
+          across the stack.
+        </p>
+        <p className={text.tertiary}>Here&apos;s a look at my experience:</p>
+      </div>
+    </>
   );
 };
 
