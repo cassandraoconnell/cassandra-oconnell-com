@@ -2,6 +2,7 @@ import { MongoClient } from "mongodb";
 import { InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { Experience, History } from "@/types/History";
+import { Contact } from "@/components/Contact/Contact";
 import { Introduction } from "@/components/Introduction/Introduction";
 import { Timeline } from "@/components/Timeline/Timeline";
 import { ViewProvider } from "@/components/View/View";
@@ -22,6 +23,7 @@ export default function HomePage({
         <ViewProvider>
           <Introduction />
           {data.history ? <Timeline history={data.history} /> : null}
+          <Contact />
         </ViewProvider>
       </main>
     </>
