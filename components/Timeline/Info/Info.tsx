@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { text } from "@/style/primitives/text.css";
 import { info, maskImage } from "./Info.css";
+import { useView } from "@/components/View/View";
 
 export interface InfoProps {
   company: string;
@@ -20,6 +21,8 @@ export const Info = ({
   span,
   tags,
 }: InfoProps) => {
+  const view = useView();
+
   return (
     <>
       <div className={info.span}>
@@ -36,18 +39,22 @@ export const Info = ({
           <h4 className={text.quaternary}>{company}</h4>
         </div>
         <h3 className={text.tertiary}>{job}</h3>
-        <p className={text.senary}>{description}</p>
-        {tags ? (
-          <div className={info.details.tags.container}>
-            {tags.map((tag) => (
-              <span
-                className={classNames(info.details.tags.tag, text.senary)}
-                key={tag}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+        {view.height > 670 ? (
+          <>
+            <p className={text.senary}>{description}</p>
+            {tags ? (
+              <div className={info.details.tags.container}>
+                {tags.map((tag) => (
+                  <span
+                    className={classNames(info.details.tags.tag, text.senary)}
+                    key={tag}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </>
         ) : null}
       </div>
     </>

@@ -16,6 +16,7 @@ export const introduction = {
       position: "relative",
       textAlign: "center",
     }),
+
     gradient: style({
       background: `linear-gradient(0deg, ${colors.black} 0%, transparent 30%)`,
       bottom: 0,
@@ -24,9 +25,18 @@ export const introduction = {
       right: 0,
       top: 0,
     }),
+
     name: style({
       top: spacing.md,
       position: "absolute",
+
+      "@media": {
+        [`screen and (max-width: ${breakpoints.sm}px)`]: {
+          marginBottom: spacing.md,
+          position: "relative",
+          top: 0,
+        },
+      },
     }),
   },
 
@@ -49,7 +59,7 @@ export const introduction = {
         "@media": {
           [`screen and (max-width: ${breakpoints.sm}px)`]: {
             borderRightStyle: "none",
-            paddingRight: 0,
+            padding: 0,
             textAlign: "center",
             width: "100%",
           },

@@ -1,5 +1,5 @@
 import { createVar, style } from "@vanilla-extract/css";
-import { colors, spacing } from "@/style/tokens";
+import { breakpoints, colors, spacing } from "@/style/tokens";
 import { border } from "@/style/primitives/border.css";
 import { text } from "@/style/primitives/text.css";
 
@@ -35,6 +35,12 @@ export const timeline = {
         justifyContent: "space-between",
         position: "relative",
         width: "100%",
+
+        "@media": {
+          [`screen and (max-width: ${breakpoints.md}px)`]: {
+            height: "85%",
+          },
+        },
       }),
 
       ticks: {

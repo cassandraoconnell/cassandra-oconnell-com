@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { spacing } from "@/style/tokens";
+import { breakpoints, spacing } from "@/style/tokens";
 import { border } from "@/style/primitives/border.css";
 
 export const contact = {
@@ -27,6 +27,12 @@ export const contact = {
         flexDirection: "column",
         gap: spacing.lg,
         width: "50%",
+
+        "@media": {
+          [`screen and (max-width: ${breakpoints.sm}px)`]: {
+            width: "75%",
+          },
+        },
       }),
       item: {
         container: style({

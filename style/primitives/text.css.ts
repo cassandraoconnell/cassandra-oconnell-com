@@ -34,7 +34,7 @@ const size = styleVariants({
       },
 
       [`screen and (max-width: ${breakpoints.xxs}px)`]: {
-        fontSize: 24,
+        fontSize: 32,
       },
     },
   },

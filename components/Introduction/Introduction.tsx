@@ -37,9 +37,7 @@ const IntroductionContent = () => {
       <div
         className={introduction.headline.container}
         style={assignInlineVars({
-          [headlineHeight]: `${
-            view.orientation === "horizontal" ? view.height : view.height / 2
-          }px`,
+          [headlineHeight]: `${view.height}px`,
         })}
       >
         <Particles />
