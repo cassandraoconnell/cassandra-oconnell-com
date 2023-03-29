@@ -19,7 +19,9 @@ export const Info = ({
 }: InfoProps) => {
   return (
     <>
-      <h1 className={text.primary}>{span}</h1>
+      <div className={info.span}>
+        <h1 className={text.primary}>{span}</h1>
+      </div>
       <div className={info.details.container}>
         <div className={info.details.company.container}>
           <div
