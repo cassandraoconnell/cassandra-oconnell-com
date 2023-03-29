@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app";
 import { Darker_Grotesque } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 const font = Darker_Grotesque({
   subsets: ["latin"],
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <Component {...pageProps} />
+      <Analytics />
     </>
   );
 }
